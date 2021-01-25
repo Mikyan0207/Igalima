@@ -191,21 +191,15 @@ int main()
 
     // Texture
     Texture peko1;
-    Texture peko2;
 
     program.Attach(vertexShader);
     program.Attach(fragmentShader);
     program.Link();
-
-    fragmentShader.SetInt("texture1", 0);
-    fragmentShader.SetInt("texture2", 1);
+    program.SetInt("texture1", 0);
 
     vertexShader.Delete();
     fragmentShader.Delete();
 
-    // Wireframe rendering
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    // Default rendering
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
 
@@ -222,11 +216,6 @@ int main()
         glm::vec3(-1.3f,  1.0f, -1.5f)
     };
 
-    program.Use();
-
-
-
-
     while(!glfwWindowShouldClose(window))
     {
         float currentFrame = glfwGetTime();
@@ -238,38 +227,24 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // bind textures on corresponding texture units
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, peko1.TextureId);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, peko2.TextureId);
-
-        program.Use();
-
         // GOING 3D
         glm::mat4 projection = glm::perspective(glm::radians(GlobalCamera.FOV), 1280.0f / 720.0f, 0.1f, 100.0f);
-        unsigned int projectionLoc = glGetUniformLocation(program.ProgramId, "projection");
-        glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, &projection[0][0]);
-
         glm::mat4 view = GlobalCamera.GetViewMatrix();
 
-        unsigned int modelLoc = glGetUniformLocation(program.ProgramId, "model");
-        unsigned int viewLoc = glGetUniformLocation(program.ProgramId, "view");
-
-        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, &view[0][0]);
+        program.Use();
+        program.SetMat4("projection", projection);
+        program.SetMat4("view", view);
 
         glBindVertexArray(VAO);
         for (uint32_t i = 0; i < 10; i++)
         {
             glm::mat4 model = glm::mat4(1.0f);
             model = glm::translate(model, cubePositions[i]);
-            float angle = 20.0f * i;
-            model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model[0][0]);
+            model = glm::rotate(model, glm::radians(20.0f * i), glm::vec3(1.0f, 0.3f, 0.5f));
+            program.SetMat4("model", model);
 
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
-        //glBindVertexArray(0);
 
         glfwSwapBuffers(window);
         glfwPollEvents();

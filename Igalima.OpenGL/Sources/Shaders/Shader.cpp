@@ -53,18 +53,3 @@ void Shader::Delete()
 {
 	glDeleteShader(ShaderId);
 }
-
-void Shader::SetBool(const std::string& name, bool value) const
-{
-	glUniform1i(glGetUniformLocation(ShaderId, name.c_str()), static_cast<int>(value));
-}
-
-void Shader::SetInt(const std::string& name, int value) const
-{
-	glUniform1i(glGetUniformLocation(ShaderId, name.c_str()), value);
-}
-
-void Shader::SetFloat(const std::string& name, float value) const
-{
-	glUniform1f(glGetUniformLocation(ShaderId, name.c_str()), value);
-}
