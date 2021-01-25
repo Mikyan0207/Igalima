@@ -8,7 +8,7 @@ Texture::Texture()
 	Channels = 0;
 
 	stbi_set_flip_vertically_on_load(true);
-	unsigned char* data = stbi_load("Resources/peko.jpg", &Width, &Height, &Channels, 0);
+	unsigned char* data = stbi_load("Resources/wood.jpg", &Width, &Height, &Channels, 0);
 
 	if (data == nullptr)
 	{

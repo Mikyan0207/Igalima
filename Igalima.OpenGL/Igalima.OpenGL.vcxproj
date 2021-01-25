@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Camera.cpp" />
     <ClCompile Include="Sources\Igalima.OpenGL.cpp" />
     <ClCompile Include="Sources\glad.c" />
     <ClCompile Include="Sources\Shaders\Shader.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Sources\Textures\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers\Camera.h" />
     <ClInclude Include="Headers\Shaders\Shader.h" />
     <ClInclude Include="Headers\Shaders\ShaderProgram.h" />
     <ClInclude Include="Headers\Textures\Texture.h" />
