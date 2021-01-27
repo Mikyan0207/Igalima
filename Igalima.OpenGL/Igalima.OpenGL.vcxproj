@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\Includes;$(ProjectDir)Headers</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\Includes;$(ProjectDir)Headers;$(ProjectDit)3rdParty</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -143,18 +143,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="3rdParty\imgui\imgui.cpp" />
+    <ClCompile Include="3rdParty\imgui\imgui_demo.cpp" />
+    <ClCompile Include="3rdParty\imgui\imgui_draw.cpp" />
+    <ClCompile Include="3rdParty\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="3rdParty\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="3rdParty\imgui\imgui_tables.cpp" />
+    <ClCompile Include="3rdParty\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Sources\Camera.cpp" />
     <ClCompile Include="Sources\Igalima.OpenGL.cpp" />
     <ClCompile Include="Sources\glad.c" />
     <ClCompile Include="Sources\Shaders\Shader.cpp" />
-    <ClCompile Include="Sources\Shaders\ShaderProgram.cpp" />
     <ClCompile Include="Sources\stb_image.c" />
     <ClCompile Include="Sources\Textures\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3rdParty\imgui\imconfig.h" />
+    <ClInclude Include="3rdParty\imgui\imgui.h" />
+    <ClInclude Include="3rdParty\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="3rdParty\imgui\imgui_impl_opengl3.h" />
+    <ClInclude Include="3rdParty\imgui\imgui_internal.h" />
+    <ClInclude Include="3rdParty\imgui\imstb_rectpack.h" />
+    <ClInclude Include="3rdParty\imgui\imstb_textedit.h" />
+    <ClInclude Include="3rdParty\imgui\imstb_truetype.h" />
     <ClInclude Include="Headers\Camera.h" />
     <ClInclude Include="Headers\Shaders\Shader.h" />
-    <ClInclude Include="Headers\Shaders\ShaderProgram.h" />
     <ClInclude Include="Headers\Textures\Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
