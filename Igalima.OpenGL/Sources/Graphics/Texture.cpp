@@ -1,4 +1,4 @@
-#include "..\..\Headers\Textures\Texture.h"
+#include <Graphics/Texture.h>
 
 Texture::Texture(const std::string& path)
 {

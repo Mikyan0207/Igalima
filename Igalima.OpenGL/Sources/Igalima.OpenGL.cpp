@@ -7,8 +7,8 @@
 
 #include <iostream>
 
-#include <Shaders/Shader.h>
-#include <Textures/Texture.h>
+#include <Graphics/Shader.h>
+#include <Graphics/Texture.h>
 #include <Camera.h>
 
 #include <imgui/imgui.h>
