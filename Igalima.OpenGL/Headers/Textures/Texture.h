@@ -9,7 +9,7 @@
 class Texture
 {
 public:
-	Texture();
+	Texture(const std::string& path);
 	Texture(const Texture&) = default;
 	Texture(Texture&&) noexcept = default;
 	~Texture() = default;

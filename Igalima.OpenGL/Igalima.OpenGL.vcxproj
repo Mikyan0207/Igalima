@@ -151,6 +151,7 @@
     <ClCompile Include="3rdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="3rdParty\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Sources\Camera.cpp" />
+    <ClCompile Include="Sources\Graphics\Cube.cpp" />
     <ClCompile Include="Sources\Igalima.OpenGL.cpp" />
     <ClCompile Include="Sources\glad.c" />
     <ClCompile Include="Sources\Shaders\Shader.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="3rdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="3rdParty\imgui\imstb_truetype.h" />
     <ClInclude Include="Headers\Camera.h" />
+    <ClInclude Include="Headers\Graphics\Cube.h" />
     <ClInclude Include="Headers\Shaders\Shader.h" />
     <ClInclude Include="Headers\Textures\Texture.h" />
   </ItemGroup>
