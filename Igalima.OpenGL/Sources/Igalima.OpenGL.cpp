@@ -176,7 +176,7 @@ int main()
     glfwSetScrollCallback(window, scroll_callback);
 
     // Shaders
-    Shader lightShader("Resources/LightMap_Vertex.vs", "Resources/LightMap_Fragment.fs");
+    Shader lightShader("Resources/Shaders/DirectionalLight.vs", "Resources/Shaders/DirectionalLight.fs");
     Shader lightCubeShader("Resources/LightCube_Vertex.vs", "Resources/LightCube_Fragment.fs");
 
     // Vertices
@@ -261,8 +261,8 @@ int main()
     Texture container_specular("Resources/container2_specular.png");
 
     lightShader.Use();
-    lightShader.SetInt("material.diffuse", 0);
-    lightShader.SetInt("material.specular", 1);
+    lightShader.SetInt("material.Diffuse", 0);
+    lightShader.SetInt("material.Specular", 1);
 
     while(!glfwWindowShouldClose(window))
     {
@@ -280,20 +280,16 @@ int main()
         glm::mat4 view = GlobalCamera.GetViewMatrix();
         glm::mat4 model = glm::mat4(1.0f);
 
-        //lightPos.x = sin(glfwGetTime()) * 2.0f;
-        //lightPos.z = cos(glfwGetTime()) * 2.0f;
-        //lightPos.y = 0;
-
         lightShader.Use();
         lightShader.SetMat4("projection", projection);
         lightShader.SetMat4("view", view);
         lightShader.SetMat4("model", model);
-        lightShader.SetFloat("material.shininess", 64.0f);
+        lightShader.SetFloat("material.Shininess", 64.0f);
 
-        lightShader.SetVec3("light.ambient", glm::vec3(0.2f, 0.2f, 0.2f));
-        lightShader.SetVec3("light.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
-        lightShader.SetVec3("light.specular", glm::vec3(1.0f, 1.0f, 1.0f));
-        lightShader.SetVec3("light.position", glm::vec3(GlobalLightPosition[0], GlobalLightPosition[1], GlobalLightPosition[2]));
+        lightShader.SetVec3("light.Ambient", glm::vec3(0.05f, 0.05f, 0.1f));
+        lightShader.SetVec3("light.Diffuse", glm::vec3(0.2f, 0.2f, 0.7));
+        lightShader.SetVec3("light.Specular", glm::vec3(0.7f, 0.7f, 0.7f));
+        lightShader.SetVec3("light.Direction", glm::vec3(GlobalLightPosition[0], GlobalLightPosition[1], GlobalLightPosition[2]));
         lightShader.SetVec3("viewPos", GlobalCamera.Position);
 
         glActiveTexture(GL_TEXTURE0);
@@ -306,16 +302,16 @@ int main()
         glBindVertexArray(cubeVAO);
         glDrawArrays(GL_TRIANGLES, 0, 36);
 
-        lightCubeShader.Use();
-        lightCubeShader.SetMat4("projection", projection);
-        lightCubeShader.SetMat4("view", view);
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(GlobalLightPosition[0], GlobalLightPosition[1], GlobalLightPosition[2]));
-        model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-        lightCubeShader.SetMat4("model", model);
+        //lightCubeShader.Use();
+        //lightCubeShader.SetMat4("projection", projection);
+        //lightCubeShader.SetMat4("view", view);
+        //model = glm::mat4(1.0f);
+        //model = glm::translate(model, glm::vec3(GlobalLightPosition[0], GlobalLightPosition[1], GlobalLightPosition[2]));
+        //model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+        //lightCubeShader.SetMat4("model", model);
 
-        glBindVertexArray(lightCubeVAO);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        //glBindVertexArray(lightCubeVAO);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
 
         ImGuiWindow();
 
