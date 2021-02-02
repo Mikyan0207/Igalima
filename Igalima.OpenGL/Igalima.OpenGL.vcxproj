@@ -151,6 +151,7 @@
     <ClCompile Include="3rdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="3rdParty\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Sources\Camera.cpp" />
+    <ClCompile Include="Sources\Graphics\Mesh.cpp" />
     <ClCompile Include="Sources\Graphics\Shapes\Cube.cpp" />
     <ClCompile Include="Sources\Igalima.OpenGL.cpp" />
     <ClCompile Include="Sources\glad.c" />
@@ -169,10 +170,14 @@
     <ClInclude Include="3rdParty\imgui\imstb_truetype.h" />
     <ClInclude Include="Headers\Camera.h" />
     <ClInclude Include="Headers\Graphics\Lights\DirectionalLight.h" />
+    <ClInclude Include="Headers\Graphics\Mesh.h" />
+    <ClInclude Include="Headers\Graphics\Model.h" />
     <ClInclude Include="Headers\Graphics\Shapes\Cube.h" />
     <ClInclude Include="Headers\Graphics\Lights\PointLight.h" />
     <ClInclude Include="Headers\Graphics\Shader.h" />
     <ClInclude Include="Headers\Graphics\Texture.h" />
+    <ClInclude Include="Headers\OpenGL\Texture.h" />
+    <ClInclude Include="Headers\OpenGL\Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
