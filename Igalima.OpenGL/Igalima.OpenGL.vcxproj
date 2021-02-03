@@ -123,7 +123,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Libraries\Lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;assimp-vc142-mt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,7 +151,9 @@
     <ClCompile Include="3rdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="3rdParty\imgui\imgui_widgets.cpp" />
     <ClCompile Include="Sources\Camera.cpp" />
+    <ClCompile Include="Sources\Core\ResourcesManager.cpp" />
     <ClCompile Include="Sources\Graphics\Mesh.cpp" />
+    <ClCompile Include="Sources\Graphics\Model.cpp" />
     <ClCompile Include="Sources\Graphics\Shapes\Cube.cpp" />
     <ClCompile Include="Sources\Igalima.OpenGL.cpp" />
     <ClCompile Include="Sources\glad.c" />
@@ -169,6 +171,7 @@
     <ClInclude Include="3rdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="3rdParty\imgui\imstb_truetype.h" />
     <ClInclude Include="Headers\Camera.h" />
+    <ClInclude Include="Headers\Core\ResourcesManager.h" />
     <ClInclude Include="Headers\Graphics\Lights\DirectionalLight.h" />
     <ClInclude Include="Headers\Graphics\Mesh.h" />
     <ClInclude Include="Headers\Graphics\Model.h" />
@@ -176,8 +179,10 @@
     <ClInclude Include="Headers\Graphics\Lights\PointLight.h" />
     <ClInclude Include="Headers\Graphics\Shader.h" />
     <ClInclude Include="Headers\Graphics\Texture.h" />
-    <ClInclude Include="Headers\OpenGL\Texture.h" />
+    <ClInclude Include="Headers\OpenGL\GLColor.h" />
+    <ClInclude Include="Headers\OpenGL\GLTexture.h" />
     <ClInclude Include="Headers\OpenGL\Vertex.h" />
+    <ClInclude Include="Headers\Graphics\IDrawable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

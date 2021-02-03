@@ -20,19 +20,20 @@ public:
 	Shader& operator=(Shader&&) noexcept = default;
 
 public:
-	void Use();
-	void Delete();
+	void Use() const;
+	void Delete() const;
 
 	void SetBool(const std::string& name, bool value) const;
 	void SetInt(const std::string& name, int value) const;
 	void SetFloat(const std::string& name, float value) const;
-	void SetMat4(const std::string& name, const glm::mat4& matrix);
-	void SetVec3(const std::string& name, const glm::vec3& vec3);
+	void SetMat4(const std::string& name, const glm::mat4& matrix) const;
+	void SetVec3(const std::string& name, const glm::vec3& vec3) const;
+	void SetVec4(const std::string& name, const glm::vec4& vec4) const;
 
 private:
-	void CheckErrors(const uint32_t& shaderId);
+	static void CheckErrors(const uint32_t& shaderId);
 	void LoadShader(const std::string& path, const uint32_t& type);
-	void Link();
+	void Link() const;
 
 public:
 	uint32_t ProgramId;

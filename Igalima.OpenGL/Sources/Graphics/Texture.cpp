@@ -8,7 +8,7 @@ Texture::Texture(const std::string& path)
 	Channels = 0;
 
 	stbi_set_flip_vertically_on_load(true);
-	unsigned char* data = stbi_load(path.c_str(), &Width, &Height, &Channels, 0);
+	auto* data = stbi_load(path.c_str(), &Width, &Height, &Channels, 0);
 
 	if (data == nullptr)
 	{

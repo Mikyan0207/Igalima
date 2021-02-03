@@ -6,7 +6,7 @@
 class Cube
 {
 public:
-	Cube(const float& size);
+	Cube();
 	Cube(const Cube&) = default;
 	Cube(Cube&&) noexcept = default;
 	~Cube() = default;

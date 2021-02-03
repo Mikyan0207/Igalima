@@ -27,40 +27,45 @@ Shader::~Shader()
 	Delete();
 }
 
-void Shader::Use()
+void Shader::Use() const
 {
 	glUseProgram(ProgramId);
 }
 
-void Shader::Delete()
+void Shader::Delete() const
 {
 	glDeleteShader(VertexShaderId);
 	glDeleteShader(FragmentShaderId);
 }
 
-void Shader::SetBool(const std::string& name, bool value) const
+void Shader::SetBool(const std::string& name, const bool value) const
 {
 	glUniform1i(glGetUniformLocation(ProgramId, name.c_str()), static_cast<int>(value));
 }
 
-void Shader::SetInt(const std::string& name, int value) const
+void Shader::SetInt(const std::string& name, const int value) const
 {
 	glUniform1i(glGetUniformLocation(ProgramId, name.c_str()), value);
 }
 
-void Shader::SetFloat(const std::string& name, float value) const
+void Shader::SetFloat(const std::string& name, const float value) const
 {
 	glUniform1f(glGetUniformLocation(ProgramId, name.c_str()), value);
 }
 
-void Shader::SetMat4(const std::string& name, const glm::mat4& matrix)
+void Shader::SetMat4(const std::string& name, const glm::mat4& matrix) const
 {
 	glUniformMatrix4fv(glGetUniformLocation(ProgramId, name.c_str()), 1, GL_FALSE, &matrix[0][0]);
 }
 
-void Shader::SetVec3(const std::string& name, const glm::vec3& vec3)
+void Shader::SetVec3(const std::string& name, const glm::vec3& vec3) const
 {
 	glUniform3fv(glGetUniformLocation(ProgramId, name.c_str()), 1, &vec3[0]);
+}
+
+void Shader::SetVec4(const std::string& name, const glm::vec4& vec4) const
+{
+	glUniform4fv(glGetUniformLocation(ProgramId, name.c_str()), 1, &vec4[0]);
 }
 
 void Shader::CheckErrors(const uint32_t& shaderId)
@@ -90,7 +95,7 @@ void Shader::LoadShader(const std::string& path, const uint32_t& type)
 	while (std::getline(stream, line))
 		content += line + "\n";
 
-	const char* src = content.c_str();
+	auto src = content.c_str();
 
 	if (type == GL_VERTEX_SHADER)
 	{
@@ -113,7 +118,7 @@ void Shader::LoadShader(const std::string& path, const uint32_t& type)
 	}
 }
 
-void Shader::Link()
+void Shader::Link() const
 {
 	glLinkProgram(ProgramId);
 
