@@ -4,7 +4,7 @@
 
 ## Roadmap
 
-- 3D models loading & rendering
+- [x] 3D models loading & rendering
 - Bloom
 - HDR
 - Shadows
