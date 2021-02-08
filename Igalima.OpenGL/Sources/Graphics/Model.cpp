@@ -48,7 +48,7 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 {
 	std::vector<Vertex> vertices;
 	std::vector<uint32_t> indices;
-	std::vector<GLTexture> textures;
+	std::vector<OGLTexture> textures;
 	std::unordered_map<std::string, GLColor> colors;
 
 	vertices.reserve(mesh->mNumVertices);
@@ -110,9 +110,9 @@ Mesh Model::ProcessMesh(aiMesh* mesh, const aiScene* scene)
 	return Mesh(vertices, indices, textures, colors);
 }
 
-std::vector<GLTexture> Model::LoadMaterialTextures(aiMaterial* material, const aiTextureType& type, const std::string& typeName)
+std::vector<OGLTexture> Model::LoadMaterialTextures(aiMaterial* material, const aiTextureType& type, const std::string& typeName)
 {
-	std::vector<GLTexture> textures;
+	std::vector<OGLTexture> textures;
 
 	for (uint32_t i = 0; i < material->GetTextureCount(type); i += 1)
 	{
@@ -132,7 +132,7 @@ std::vector<GLTexture> Model::LoadMaterialTextures(aiMaterial* material, const a
 		}
 		if (!skip)
 		{
-			GLTexture texture;
+			OGLTexture texture;
 			texture.Id = TextureFromFile(str.C_Str(), m_Directory, false);
 			texture.Type = typeName;
 			texture.Path = str.C_Str();

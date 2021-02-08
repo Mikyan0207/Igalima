@@ -2,10 +2,27 @@
 
 #include <cstdint>
 #include <string>
+#include <glad/glad.h>
 
-struct GLTexture
+class GLTexture
 {
-	uint32_t Id;
-	std::string Type;
-	std::string Path;
+public:
+    GLTexture(const uint32_t& width, const uint32_t& height);
+    GLTexture(const std::string& path);
+    GLTexture(const GLTexture&) = default;
+    GLTexture(GLTexture&&) noexcept = default;
+    ~GLTexture();
+
+public:
+    GLTexture& operator=(const GLTexture&) = default;
+    GLTexture& operator=(GLTexture&&) noexcept = default;
+
+public:
+    void Bind(const uint32_t& slot) const;
+    void Delete() const;
+
+private:
+    uint32_t m_Id;
+    uint32_t m_Width;
+    uint32_t m_Height;
 };

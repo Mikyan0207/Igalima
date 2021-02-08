@@ -7,14 +7,14 @@
 GLVertexBuffer::GLVertexBuffer(const uint32_t& size, const GLVertexBufferDrawMode& mode)
 {
     glGenBuffers(1, &m_Id);
-    glBindBuffer(GL_ARRAY_BUFFER, m_Id);
+    Bind();
     glBufferData(GL_ARRAY_BUFFER, size, nullptr, static_cast<GLenum>(mode));
 }
 
 GLVertexBuffer::GLVertexBuffer(float* vertices, const GLVertexBufferDrawMode& mode)
 {
     glGenBuffers(1, &m_Id);
-    glBindBuffer(GL_ARRAY_BUFFER, m_Id);
+    Bind();
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, static_cast<GLenum>(mode));
 }
 

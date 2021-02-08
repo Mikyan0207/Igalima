@@ -1,16 +1,24 @@
 #pragma once
 
 #include <vector>
+#include <string>
+#include <cstdint>
 #include <unordered_map>
 #include <OpenGL/Vertex.h>
-#include <OpenGL/GLTexture.h>
 #include <Graphics/Shader.h>
 #include <OpenGL/GLColor.h>
+
+struct OGLTexture
+{
+	uint32_t Id;
+	std::string Path;
+	std::string Type;
+};
 
 class Mesh
 {
 	public:
-		Mesh(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices, const std::vector<GLTexture>& textures, std::unordered_map<std::string, GLColor> colors);
+		Mesh(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices, const std::vector<OGLTexture>& textures, std::unordered_map<std::string, GLColor> colors);
 		Mesh(const Mesh&) = default;
 		Mesh(Mesh&&) noexcept = default;
 		~Mesh() = default;
@@ -25,7 +33,7 @@ class Mesh
 	public:
 		std::vector<Vertex> Vertices;
 		std::vector<uint32_t> Indices;
-		std::vector<GLTexture> Textures;
+		std::vector<OGLTexture> Textures;
 	private:
 		uint32_t m_VertexArrayObject;
 		uint32_t m_VertexBufferObject;

@@ -1,6 +1,6 @@
 #include <Graphics/Mesh.h>
 
-Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices, const std::vector<GLTexture>& textures, std::unordered_map<std::string, GLColor> colors)
+Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices, const std::vector<OGLTexture>& textures, std::unordered_map<std::string, GLColor> colors)
 {
 	Vertices = vertices;
 	Indices = indices;

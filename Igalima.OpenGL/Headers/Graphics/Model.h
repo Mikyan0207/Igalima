@@ -28,10 +28,10 @@ private:
 	void LoadModel(const std::string& path);
 	void ProcessNode(aiNode* node, const aiScene* scene);
 	Mesh ProcessMesh(aiMesh* mesh, const aiScene* scene);
-	std::vector<GLTexture> LoadMaterialTextures(aiMaterial* material, const aiTextureType& type, const std::string& typeName);
+	std::vector<OGLTexture> LoadMaterialTextures(aiMaterial* material, const aiTextureType& type, const std::string& typeName);
 	static uint32_t TextureFromFile(const char* path, const std::string& directory, bool gamma);
 private:
 	std::vector<Mesh> m_Meshes;
-	std::vector<GLTexture> m_TexturesLoaded;
+	std::vector<OGLTexture> m_TexturesLoaded;
 	std::string m_Directory;
 };
