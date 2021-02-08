@@ -158,6 +158,8 @@
     <ClCompile Include="Sources\Igalima.OpenGL.cpp" />
     <ClCompile Include="Sources\glad.c" />
     <ClCompile Include="Sources\Graphics\Shader.cpp" />
+    <ClCompile Include="Sources\OpenGL\GLVertexArray.cpp" />
+    <ClCompile Include="Sources\OpenGL\GLVertexBuffer.cpp" />
     <ClCompile Include="Sources\stb_image.c" />
     <ClCompile Include="Sources\Graphics\Texture.cpp" />
   </ItemGroup>
@@ -181,6 +183,8 @@
     <ClInclude Include="Headers\Graphics\Texture.h" />
     <ClInclude Include="Headers\OpenGL\GLColor.h" />
     <ClInclude Include="Headers\OpenGL\GLTexture.h" />
+    <ClInclude Include="Headers\OpenGL\GLVertexArray.h" />
+    <ClInclude Include="Headers\OpenGL\GLVertexBuffer.h" />
     <ClInclude Include="Headers\OpenGL\Vertex.h" />
     <ClInclude Include="Headers\Graphics\IDrawable.h" />
   </ItemGroup>
