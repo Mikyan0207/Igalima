@@ -6,11 +6,18 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
+#include <memory>
 
 #include <Graphics/Shader.h>
 #include <Graphics/Texture.h>
 #include <Camera.h>
 #include <Graphics/Model.h>
+
+#include <OpenGL/GLVertexArray.h>
+#include <OpenGL/GLVertexBuffer.h>
+#include <OpenGL/GLShaderProgram.h>
+#include <OpenGL/GLShader.h>
+#include <Graphics/Primitives/Triangle.h>
 
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw.h>
@@ -166,10 +173,28 @@ int main()
     glfwSetScrollCallback(window, scroll_callback);
 
     // Shaders
-    Shader shader("Resources/Shaders/Mesh.vs", "Resources/Shaders/Mesh.fs");
+    //Shader shader("Resources/Shaders/Mesh.vs", "Resources/Shaders/Mesh.fs");
 
     // Models
-    Model backpack("Resources/Models/Sponza/sponza.obj");
+    //Model backpack("Resources/Models/Sponza/sponza.obj");
+
+    // Testing classes
+    Triangle t({ -0.5, -0.5f }, { 0.5f, -0.5f }, { 0.0f, 0.5f });
+
+    GLVertexArray vertexArray;
+
+    auto vertexBuffer = std::make_unique<GLVertexBuffer>(t.GetVertices(), t.GetSize(), GLVertexBufferDrawMode::STATIC);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+    vertexArray.AddBuffer(vertexBuffer); // Now, VertexArray takes the ownership.
+
+    GLShaderProgram program;
+    GLShader shader("Resources/Shaders/VertexShader.vs", "Resources/Shaders/FragmentShader.fs");
+
+    program.AddShader(shader);
+    program.Link();
 
     while(!glfwWindowShouldClose(window))
     {
@@ -189,12 +214,13 @@ int main()
 
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
         model = glm::scale(model, glm::vec3(.005f, .005f, .005f));
-        shader.Use();
-        shader.SetMat4("view", view);
-        shader.SetMat4("projection", projection);
-        shader.SetMat4("model", model);
+        //shader.SetMat4("view", view);
+        //shader.SetMat4("projection", projection);
+        //shader.SetMat4("model", model);
 
-        backpack.Draw(shader);
+        //backpack.Draw(shader);
+        program.Use();
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         ImGuiWindow();
 

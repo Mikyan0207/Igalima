@@ -11,11 +11,11 @@ GLVertexBuffer::GLVertexBuffer(const uint32_t& size, const GLVertexBufferDrawMod
     glBufferData(GL_ARRAY_BUFFER, size, nullptr, static_cast<GLenum>(mode));
 }
 
-GLVertexBuffer::GLVertexBuffer(float* vertices, const GLVertexBufferDrawMode& mode)
+GLVertexBuffer::GLVertexBuffer(const float* vertices, const uint32_t& size, const GLVertexBufferDrawMode& mode)
 {
     glGenBuffers(1, &m_Id);
     Bind();
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, static_cast<GLenum>(mode));
+    glBufferData(GL_ARRAY_BUFFER, size, vertices, static_cast<GLenum>(mode));
 }
 
 GLVertexBuffer::~GLVertexBuffer()

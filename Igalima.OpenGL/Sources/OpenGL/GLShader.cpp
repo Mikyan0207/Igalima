@@ -37,11 +37,11 @@ const uint32_t& GLShader::GetFragmentId() const
 
 void GLShader::LoadShader(const std::string& path, const uint32_t& type)
 {
-    std::ifstream stream (path);
+    std::ifstream stream(path);
 
     if (!stream.is_open())
     {
-        std::cerr << "[Shader Program] Error: File " << path << " not found." << std::endl;
+        std::cerr << "[Shader] Error: File " << path << " not found." << std::endl;
         return;
     }
 

@@ -9,6 +9,7 @@ GLVertexArray::GLVertexArray()
     glGenVertexArrays(1, &m_Id);
 
     // Bind VAO at creation?
+    Bind();
 }
 
 GLVertexArray::~GLVertexArray()

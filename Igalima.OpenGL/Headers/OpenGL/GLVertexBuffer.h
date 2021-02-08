@@ -13,7 +13,7 @@ class GLVertexBuffer
 {
 public:
     GLVertexBuffer(const uint32_t& size, const GLVertexBufferDrawMode& mode);
-    GLVertexBuffer(float* vertices, const GLVertexBufferDrawMode& mode);
+    GLVertexBuffer(const float* vertices, const uint32_t& size, const GLVertexBufferDrawMode& mode);
     GLVertexBuffer(const GLVertexBuffer&) = default;
     GLVertexBuffer(GLVertexBuffer&&) noexcept = default;
     ~GLVertexBuffer();

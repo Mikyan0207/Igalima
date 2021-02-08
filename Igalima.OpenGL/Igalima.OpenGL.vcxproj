@@ -154,6 +154,7 @@
     <ClCompile Include="Sources\Core\ResourcesManager.cpp" />
     <ClCompile Include="Sources\Graphics\Mesh.cpp" />
     <ClCompile Include="Sources\Graphics\Model.cpp" />
+    <ClCompile Include="Sources\Graphics\Primitives\Triangle.cpp" />
     <ClCompile Include="Sources\Graphics\Shapes\Cube.cpp" />
     <ClCompile Include="Sources\Igalima.OpenGL.cpp" />
     <ClCompile Include="Sources\glad.c" />
@@ -181,6 +182,7 @@
     <ClInclude Include="Headers\Graphics\Lights\DirectionalLight.h" />
     <ClInclude Include="Headers\Graphics\Mesh.h" />
     <ClInclude Include="Headers\Graphics\Model.h" />
+    <ClInclude Include="Headers\Graphics\Primitives\Triangle.h" />
     <ClInclude Include="Headers\Graphics\Shapes\Cube.h" />
     <ClInclude Include="Headers\Graphics\Lights\PointLight.h" />
     <ClInclude Include="Headers\Graphics\Shader.h" />
