@@ -10,6 +10,7 @@
 #include <glad/glad.h>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 class GLShader
 {
@@ -24,8 +25,15 @@ public:
     GLShader& operator=(GLShader&&) noexcept = default;
 
 public:
+    void Delete() const;
+
+public:
     const uint32_t& GetVertexId() const;
     const uint32_t& GetFragmentId() const;
+
+private:
+    void LoadShader(const std::string& path, const uint32_t& type);
+    void CheckErrors(const uint32_t& shaderId);
 
 private:
     uint32_t m_VertexId;

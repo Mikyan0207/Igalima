@@ -10,6 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <glad/glad.h>
+#include <glm/glm.hpp>
 #include <OpenGL/GLShader.h>
 
 // @Incomplete: Check this again later.
@@ -29,11 +30,17 @@ public:
 
 public:
     void AddShader(const GLShader& shader);
-    void AddShader(const uint32_t& shaderId);
-    void AddShader(const uint32_t& vertexId, const uint32_t& fragmentId);
-    void Bind(const uint32_t& id);
-    void Bind(const GLShader& shader);
+    void Use();
+    void Link();
     void Delete();
+
+public:
+    void SetBool(const std::string& name, const bool value);
+    void SetInt(const std::string& name, const int& value);
+    void SetFloat(const std::string& name, const float& value);
+    void SetVec3(const std::string& name, const glm::vec3& value);
+    void SetVec4(const std::string& name, const glm::vec4& value);
+    void SetMat4(const std::string& name, const glm::mat4& value);
 
 private:
     uint32_t m_Id;

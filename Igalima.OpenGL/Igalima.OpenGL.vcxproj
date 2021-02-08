@@ -159,6 +159,8 @@
     <ClCompile Include="Sources\glad.c" />
     <ClCompile Include="Sources\Graphics\Shader.cpp" />
     <ClCompile Include="Sources\OpenGL\GLFramebuffer.cpp" />
+    <ClCompile Include="Sources\OpenGL\GLShader.cpp" />
+    <ClCompile Include="Sources\OpenGL\GLShaderProgram.cpp" />
     <ClCompile Include="Sources\OpenGL\GLTexture.cpp" />
     <ClCompile Include="Sources\OpenGL\GLVertexArray.cpp" />
     <ClCompile Include="Sources\OpenGL\GLVertexBuffer.cpp" />
