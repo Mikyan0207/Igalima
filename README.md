@@ -5,6 +5,7 @@
 ## Roadmap
 
 - [x] 3D models loading & rendering
+- [x] Skybox
 - Bloom
 - HDR
 - Shadows
