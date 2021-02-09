@@ -8,6 +8,9 @@
 #include <array>
 #include <glm/glm.hpp>
 
+
+// Maybe the triangle class should have a VBO, VAO and a Shader and implements a Draw() method?
+// I don't know what's the best between the actual class and a class with a Draw method..
 class Triangle
 {
 public:

@@ -163,7 +163,7 @@ int main()
         ImGui_ImplOpenGL3_Init(glsl_version);
     #pragma endregion
 
-    stbi_set_flip_vertically_on_load(true);
+    //stbi_set_flip_vertically_on_load(true);
 
     glViewport(0, 0, 1280, 720);
     glEnable(GL_DEPTH_TEST);
@@ -173,29 +173,12 @@ int main()
     glfwSetScrollCallback(window, scroll_callback);
 
     // Shaders
-    //Shader shader("Resources/Shaders/Mesh.vs", "Resources/Shaders/Mesh.fs");
+    Shader shader("Resources/Shaders/Mesh.vs", "Resources/Shaders/Mesh.fs");
 
     // Models
-    //Model backpack("Resources/Models/Sponza/sponza.obj");
+    Model backpack("Resources/Models/Sponza/sponza.obj");
 
     // Testing classes
-    Triangle t({ -0.5, -0.5f }, { 0.5f, -0.5f }, { 0.0f, 0.5f });
-
-    GLVertexArray vertexArray;
-
-    auto vertexBuffer = std::make_unique<GLVertexBuffer>(t.GetVertices(), t.GetSize(), GLVertexBufferDrawMode::STATIC);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-
-    vertexArray.AddBuffer(vertexBuffer); // Now, VertexArray takes the ownership.
-
-    GLShaderProgram program;
-    GLShader shader("Resources/Shaders/VertexShader.vs", "Resources/Shaders/FragmentShader.fs");
-
-    program.AddShader(shader);
-    program.Link();
-
     while(!glfwWindowShouldClose(window))
     {
         float currentFrame = glfwGetTime();
@@ -214,13 +197,12 @@ int main()
 
         model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
         model = glm::scale(model, glm::vec3(.005f, .005f, .005f));
-        //shader.SetMat4("view", view);
-        //shader.SetMat4("projection", projection);
-        //shader.SetMat4("model", model);
+        shader.Use();
+        shader.SetMat4("view", view);
+        shader.SetMat4("projection", projection);
+        shader.SetMat4("model", model);
 
-        //backpack.Draw(shader);
-        program.Use();
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        backpack.Draw(shader);
 
         ImGuiWindow();
 
