@@ -156,17 +156,17 @@
     <ClCompile Include="Sources\Graphics\Model.cpp" />
     <ClCompile Include="Sources\Graphics\Primitives\Triangle.cpp" />
     <ClCompile Include="Sources\Graphics\Shapes\Cube.cpp" />
+    <ClCompile Include="Sources\Graphics\Textures\Skybox.cpp" />
     <ClCompile Include="Sources\Igalima.OpenGL.cpp" />
     <ClCompile Include="Sources\glad.c" />
-    <ClCompile Include="Sources\Graphics\Shader.cpp" />
-    <ClCompile Include="Sources\OpenGL\GLFramebuffer.cpp" />
     <ClCompile Include="Sources\OpenGL\GLShader.cpp" />
-    <ClCompile Include="Sources\OpenGL\GLShaderProgram.cpp" />
+    <ClCompile Include="Sources\OpenGL\GLFramebuffer.cpp" />
     <ClCompile Include="Sources\OpenGL\GLTexture.cpp" />
     <ClCompile Include="Sources\OpenGL\GLVertexArray.cpp" />
     <ClCompile Include="Sources\OpenGL\GLVertexBuffer.cpp" />
+    <ClCompile Include="Sources\OpenGL\GLWrapper.cpp" />
     <ClCompile Include="Sources\stb_image.c" />
-    <ClCompile Include="Sources\Graphics\Texture.cpp" />
+    <ClCompile Include="Sources\Graphics\Textures\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="3rdParty\imgui\imconfig.h" />
@@ -185,15 +185,15 @@
     <ClInclude Include="Headers\Graphics\Primitives\Triangle.h" />
     <ClInclude Include="Headers\Graphics\Shapes\Cube.h" />
     <ClInclude Include="Headers\Graphics\Lights\PointLight.h" />
-    <ClInclude Include="Headers\Graphics\Shader.h" />
-    <ClInclude Include="Headers\Graphics\Texture.h" />
+    <ClInclude Include="Headers\OpenGL\GLShader.h" />
+    <ClInclude Include="Headers\Graphics\Textures\Skybox.h" />
+    <ClInclude Include="Headers\Graphics\Textures\Texture.h" />
     <ClInclude Include="Headers\OpenGL\GLColor.h" />
     <ClInclude Include="Headers\OpenGL\GLFramebuffer.h" />
-    <ClInclude Include="Headers\OpenGL\GLShader.h" />
-    <ClInclude Include="Headers\OpenGL\GLShaderProgram.h" />
     <ClInclude Include="Headers\OpenGL\GLTexture.h" />
     <ClInclude Include="Headers\OpenGL\GLVertexArray.h" />
     <ClInclude Include="Headers\OpenGL\GLVertexBuffer.h" />
+    <ClInclude Include="Headers\OpenGL\GLWrapper.h" />
     <ClInclude Include="Headers\OpenGL\Vertex.h" />
     <ClInclude Include="Headers\Graphics\IDrawable.h" />
   </ItemGroup>

@@ -6,7 +6,7 @@ Model::Model(const std::string& path)
 	LoadModel(path);
 }
 
-void Model::Draw(Shader& shader)
+void Model::Draw(GLShader& shader)
 {
 	for (auto& mesh : m_Meshes)
 		mesh.Draw(shader);

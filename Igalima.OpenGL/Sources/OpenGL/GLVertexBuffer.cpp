@@ -18,6 +18,13 @@ GLVertexBuffer::GLVertexBuffer(const float* vertices, const uint32_t& size, cons
     glBufferData(GL_ARRAY_BUFFER, size, vertices, static_cast<GLenum>(mode));
 }
 
+GLVertexBuffer::GLVertexBuffer(const std::vector<float>& vertices, const GLVertexBufferDrawMode& mode)
+{
+    glGenBuffers(1, &m_Id);
+    Bind();
+    glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), static_cast<GLenum>(mode));
+}
+
 GLVertexBuffer::~GLVertexBuffer()
 {
     Delete();

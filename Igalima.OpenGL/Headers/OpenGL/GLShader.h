@@ -1,43 +1,42 @@
-//
-// Created by Mikyan on 08/02/2021.
-//
+#pragma once
 
-#ifndef IGALIMA_OPENGL_GLSHADER_H
-#define IGALIMA_OPENGL_GLSHADER_H
-
-#include <cstdint>
-#include <string>
 #include <glad/glad.h>
-#include <fstream>
+#include <glm/glm.hpp>
+
+#include <string>
 #include <iostream>
-#include <vector>
+#include <fstream>
 
 class GLShader
 {
 public:
-    GLShader(const std::string& vertexPath, const std::string& fragmentPath);
-    GLShader(const GLShader&) = default;
-    GLShader(GLShader&&) noexcept = default;
-    ~GLShader();
+	GLShader(const std::string& vertexPath, const std::string& fragmentPath);
+	GLShader(const GLShader&) = default;
+	GLShader(GLShader&&) noexcept = default;
+	~GLShader();
 
 public:
-    GLShader& operator=(const GLShader&) = default;
-    GLShader& operator=(GLShader&&) noexcept = default;
+	GLShader& operator=(const GLShader&) = default;
+	GLShader& operator=(GLShader&&) noexcept = default;
 
 public:
-    void Delete() const;
+	void Use() const;
+	void Delete() const;
 
-public:
-    const uint32_t& GetVertexId() const;
-    const uint32_t& GetFragmentId() const;
+	void SetBool(const std::string& name, bool value) const;
+	void SetInt(const std::string& name, int value) const;
+	void SetFloat(const std::string& name, float value) const;
+	void SetMat4(const std::string& name, const glm::mat4& matrix) const;
+	void SetVec3(const std::string& name, const glm::vec3& vec3) const;
+	void SetVec4(const std::string& name, const glm::vec4& vec4) const;
 
 private:
-    void LoadShader(const std::string& path, const uint32_t& type);
-    void CheckErrors(const uint32_t& shaderId);
+	static void CheckErrors(const uint32_t& shaderId);
+	void LoadShader(const std::string& path, const uint32_t& type);
+	void Link() const;
 
-private:
-    uint32_t m_VertexId;
-    uint32_t m_FragmentId;
+public:
+	uint32_t ProgramId;
+	uint32_t VertexShaderId;
+	uint32_t FragmentShaderId;
 };
-
-#endif //IGALIMA_OPENGL_GLSHADER_H

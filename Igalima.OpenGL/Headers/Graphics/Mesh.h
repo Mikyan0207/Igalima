@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <unordered_map>
 #include <OpenGL/Vertex.h>
-#include <Graphics/Shader.h>
+#include <OpenGL/GLShader.h>
 #include <OpenGL/GLColor.h>
 
 struct OGLTexture
@@ -28,7 +28,7 @@ class Mesh
 		Mesh& operator=(Mesh&&) noexcept = default;
 
 	public:
-		void Draw(Shader& shader);
+		void Draw(GLShader& shader);
 
 	public:
 		std::vector<Vertex> Vertices;

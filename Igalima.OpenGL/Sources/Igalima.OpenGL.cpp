@@ -8,14 +8,13 @@
 #include <iostream>
 #include <memory>
 
-#include <Graphics/Shader.h>
-#include <Graphics/Texture.h>
+#include <Graphics/Textures/Texture.h>
+#include <Graphics/Textures/Skybox.h>
 #include <Camera.h>
 #include <Graphics/Model.h>
 
 #include <OpenGL/GLVertexArray.h>
 #include <OpenGL/GLVertexBuffer.h>
-#include <OpenGL/GLShaderProgram.h>
 #include <OpenGL/GLShader.h>
 #include <Graphics/Primitives/Triangle.h>
 
@@ -173,10 +172,22 @@ int main()
     glfwSetScrollCallback(window, scroll_callback);
 
     // Shaders
-    Shader shader("Resources/Shaders/Mesh.vs", "Resources/Shaders/Mesh.fs");
+    GLShader shader("Resources/Shaders/Mesh.vs", "Resources/Shaders/Mesh.fs");
+    GLShader skyboxShader("Resources/Shaders/Skybox.vs", "Resources/Shaders/Skybox.fs");
 
     // Models
     Model backpack("Resources/Models/Sponza/sponza.obj");
+    Skybox skybox({
+        "Resources/skybox/right.jpg",
+        "Resources/skybox/left.jpg",
+        "Resources/skybox/top.jpg",
+        "Resources/skybox/bottom.jpg",
+        "Resources/skybox/front.jpg",
+        "Resources/skybox/back.jpg",
+    });
+
+    skyboxShader.Use();
+    skyboxShader.SetInt("skybox", 0);
 
     // Testing classes
     while(!glfwWindowShouldClose(window))
@@ -203,6 +214,13 @@ int main()
         shader.SetMat4("model", model);
 
         backpack.Draw(shader);
+
+        skyboxShader.Use();
+        view = glm::mat4(glm::mat3(GlobalCamera.GetViewMatrix())); // Remove translation from view matrix.
+        skyboxShader.SetMat4("view", view);
+        skyboxShader.SetMat4("projection", projection);
+
+        skybox.Draw(skyboxShader);
 
         ImGuiWindow();
 

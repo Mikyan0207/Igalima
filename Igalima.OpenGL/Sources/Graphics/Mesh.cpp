@@ -41,7 +41,7 @@ Mesh::Mesh(const std::vector<Vertex>& vertices, const std::vector<uint32_t>& ind
 	glBindVertexArray(0);
 }
 
-void Mesh::Draw(Shader& shader)
+void Mesh::Draw(GLShader& shader)
 {
     unsigned int diffuseNr = 1;
     unsigned int specularNr = 1;

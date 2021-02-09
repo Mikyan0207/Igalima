@@ -22,7 +22,7 @@ public:
 	Model& operator=(Model&&) noexcept = default;
 
 public:
-	void Draw(Shader& shader);
+	void Draw(GLShader& shader);
 
 private:
 	void LoadModel(const std::string& path);
