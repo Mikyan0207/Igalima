@@ -33,7 +33,6 @@ Skybox::Skybox(const std::vector<std::string>& paths)
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
 
-
     m_VertexArray = new GLVertexArray();
     auto vbo = std::make_unique<GLVertexBuffer>(std::vector<float> {
         -1.0f, 1.0f, -1.0f,
