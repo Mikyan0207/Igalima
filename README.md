@@ -7,6 +7,7 @@
 - [x] 3D models loading & rendering
 - [x] Skybox
 - Collisions
+- Text Rendering
 - Bloom
 - HDR
 - Shadows
