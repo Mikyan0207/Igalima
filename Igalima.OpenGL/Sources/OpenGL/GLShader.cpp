@@ -38,34 +38,46 @@ void GLShader::Delete() const
 	glDeleteShader(FragmentShaderId);
 }
 
-void GLShader::SetBool(const std::string& name, const bool value) const
+GLShader& GLShader::SetBool(const std::string& name, const bool value)
 {
 	glUniform1i(glGetUniformLocation(ProgramId, name.c_str()), static_cast<int>(value));
+
+	return *this;
 }
 
-void GLShader::SetInt(const std::string& name, const int value) const
+GLShader& GLShader::SetInt(const std::string& name, const int value)
 {
 	glUniform1i(glGetUniformLocation(ProgramId, name.c_str()), value);
+
+	return *this;
 }
 
-void GLShader::SetFloat(const std::string& name, const float value) const
+GLShader& GLShader::SetFloat(const std::string& name, const float value)
 {
 	glUniform1f(glGetUniformLocation(ProgramId, name.c_str()), value);
+
+	return *this;
 }
 
-void GLShader::SetMat4(const std::string& name, const glm::mat4& matrix) const
+GLShader& GLShader::SetMat4(const std::string& name, const glm::mat4& matrix)
 {
 	glUniformMatrix4fv(glGetUniformLocation(ProgramId, name.c_str()), 1, GL_FALSE, &matrix[0][0]);
+
+	return *this;
 }
 
-void GLShader::SetVec3(const std::string& name, const glm::vec3& vec3) const
+GLShader& GLShader::SetVec3(const std::string& name, const glm::vec3& vec3)
 {
 	glUniform3fv(glGetUniformLocation(ProgramId, name.c_str()), 1, &vec3[0]);
+
+	return *this;
 }
 
-void GLShader::SetVec4(const std::string& name, const glm::vec4& vec4) const
+GLShader& GLShader::SetVec4(const std::string& name, const glm::vec4& vec4)
 {
 	glUniform4fv(glGetUniformLocation(ProgramId, name.c_str()), 1, &vec4[0]);
+
+	return *this;
 }
 
 void GLShader::CheckErrors(const uint32_t& shaderId)

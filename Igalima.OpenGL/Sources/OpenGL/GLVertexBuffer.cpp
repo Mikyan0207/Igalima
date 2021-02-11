@@ -4,21 +4,21 @@
 
 #include <OpenGL/GLVertexBuffer.h>
 
-GLVertexBuffer::GLVertexBuffer(const uint32_t& size, const GLVertexBufferDrawMode& mode)
+GLVertexBuffer::GLVertexBuffer(const uint32_t& size, const GLDrawMode& mode)
 {
     glGenBuffers(1, &m_Id);
     Bind();
     glBufferData(GL_ARRAY_BUFFER, size, nullptr, static_cast<GLenum>(mode));
 }
 
-GLVertexBuffer::GLVertexBuffer(const float* vertices, const uint32_t& size, const GLVertexBufferDrawMode& mode)
+GLVertexBuffer::GLVertexBuffer(const float* vertices, const uint32_t& size, const GLDrawMode& mode)
 {
     glGenBuffers(1, &m_Id);
     Bind();
     glBufferData(GL_ARRAY_BUFFER, size, vertices, static_cast<GLenum>(mode));
 }
 
-GLVertexBuffer::GLVertexBuffer(const std::vector<float>& vertices, const GLVertexBufferDrawMode& mode)
+GLVertexBuffer::GLVertexBuffer(const std::vector<float>& vertices, const GLDrawMode& mode)
 {
     glGenBuffers(1, &m_Id);
     Bind();

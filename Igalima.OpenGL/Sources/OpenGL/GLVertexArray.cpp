@@ -38,6 +38,11 @@ void GLVertexArray::AddBuffer(std::unique_ptr<GLVertexBuffer>& buffer)
     m_Buffers.emplace_back(std::move(buffer));
 }
 
+void GLVertexArray::AddBuffer(std::unique_ptr<GLIndexBuffer>& buffer)
+{
+    m_IndexBuffers.emplace_back(std::move(buffer));
+}
+
 void GLVertexArray::RemoveBuffer(const uint32_t& bufferId)
 {
     auto it = std::find_if(m_Buffers.begin(), m_Buffers.end(), [&bufferId](const auto& buffer)
@@ -57,6 +62,19 @@ GLVertexBuffer* GLVertexArray::GetBuffer(const uint32_t& bufferId)
     });
 
     if (it != m_Buffers.end())
+        return (*it).get();
+
+    return nullptr;
+}
+
+GLIndexBuffer* GLVertexArray::GetIndexBuffer(const uint32_t& bufferId)
+{
+    auto it = std::find_if(m_IndexBuffers.begin(), m_IndexBuffers.end(), [&bufferId](const auto& buffer)
+        {
+            return buffer->GetId() == bufferId;
+        });
+
+    if (it != m_IndexBuffers.end())
         return (*it).get();
 
     return nullptr;

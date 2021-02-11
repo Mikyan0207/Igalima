@@ -3,19 +3,14 @@
 #include <cstdint>
 #include <vector>
 #include <glad/glad.h>
-
-enum class GLVertexBufferDrawMode
-{
-    STATIC = GL_STATIC_DRAW,
-    DYNAMIC = GL_DYNAMIC_DRAW
-};
+#include <OpenGL/GLDrawMode.h>
 
 class GLVertexBuffer
 {
 public:
-    GLVertexBuffer(const uint32_t& size, const GLVertexBufferDrawMode& mode);
-    GLVertexBuffer(const float* vertices, const uint32_t& size, const GLVertexBufferDrawMode& mode);
-    GLVertexBuffer(const std::vector<float>& vertices, const GLVertexBufferDrawMode& mode);
+    GLVertexBuffer(const uint32_t& size, const GLDrawMode& mode);
+    GLVertexBuffer(const float* vertices, const uint32_t& size, const GLDrawMode& mode);
+    GLVertexBuffer(const std::vector<float>& vertices, const GLDrawMode& mode);
     GLVertexBuffer(const GLVertexBuffer&) = default;
     GLVertexBuffer(GLVertexBuffer&&) noexcept = default;
     ~GLVertexBuffer();

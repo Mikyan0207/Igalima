@@ -76,7 +76,7 @@ Skybox::Skybox(const std::vector<std::string>& paths)
         1.0f, -1.0f, -1.0f,
         -1.0f, -1.0f, 1.0f,
         1.0f, -1.0f, 1.0f
-    }, GLVertexBufferDrawMode::STATIC);
+    }, GLDrawMode::STATIC);
 
     m_VertexArray->AddBuffer(vbo);
 
