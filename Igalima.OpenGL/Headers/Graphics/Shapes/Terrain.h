@@ -23,16 +23,17 @@ public:
 	Terrain& operator=(Terrain&&) noexcept = default;
 
 public:
-    void Draw();
+    void Draw(const uint32_t& textureId);
 	void SetMVP(const glm::mat4& model, const glm::mat4& view, const glm::mat4& projection);
 
 private:
 	uint32_t m_Size;
 	uint32_t m_VerticesCount;
 	uint32_t m_IndicesCount;
+	uint32_t m_TextureCoordinatesCount;
 	GLVertexArray m_VertexArray;
 	GLShader m_Shader;
 
-	// Temporary
-	Texture* m_NoiseTexture;
+	Texture* heightmap;
+
 };

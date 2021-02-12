@@ -34,8 +34,10 @@ void Noise::Draw()
 	SetUniforms();
 
 	m_VertexArray.Bind();
-	GLWrapper::DrawArray(GL_TRIANGLE_STRIP, 0, 4); // ?
+	GLWrapper::DrawArray(GL_TRIANGLE_STRIP, 0, 4);
 	m_VertexArray.Unbind();
+
+	m_Shader.Unbind();
 }
 
 void Noise::Initialize()
@@ -50,10 +52,10 @@ void Noise::Initialize()
 	// I still don't know why, so I will do some investigations later on.
 	// Found a fix on the web, saying that I need to use 2 VBOs..?
 	auto vbo1 = std::make_unique<GLVertexBuffer>(std::vector<float> {
-		-1.0f, -1.0f, 0.0f, 
-		 1.0f, -1.0f, 0.0f, 
-		-1.0f,  1.0f, 0.0f, 
-		 1.0f,  1.0f, 0.0f, 
+		-1.0f, -1.0f, 0.0f,
+		 1.0f, -1.0f, 0.0f,
+		-1.0f,  1.0f, 0.0f,
+		 1.0f,  1.0f, 0.0f,
 	}, GLDrawMode::STATIC);
 	GLWrapper::VertexAttributePointer(0, 3, GL_FLOAT, 3 * sizeof(float), 0); // Position
 	m_VertexArray.AddBuffer(vbo1);
@@ -64,6 +66,7 @@ void Noise::Initialize()
 		0.0f, 1.0f,
 		1.0f, 1.0f
 	}, GLDrawMode::STATIC);
+	// @Note: Replace with location = 1.
 	GLWrapper::VertexAttributePointer(m_Shader.ProgramId, "mTexCoords", 2, GL_FLOAT, 2 * sizeof(float), 0); // TexCoords
 	m_VertexArray.AddBuffer(vbo2);
 

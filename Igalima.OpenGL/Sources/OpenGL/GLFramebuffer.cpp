@@ -13,15 +13,14 @@ GLFramebuffer::GLFramebuffer(const uint32_t& width, const uint32_t& height)
     glGenTextures(1,&m_ColorAttachmentId);
     glBindTexture(GL_TEXTURE_2D, m_ColorAttachmentId);
 
+    // Create Texture for color attachment
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_R32F, m_Width, m_Height, 0, GL_RED, GL_UNSIGNED_BYTE, 0);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-    // Using interpolation
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    // Create Texture for color attachment
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_R32F, m_Width, m_Height, 0, GL_RED, GL_UNSIGNED_BYTE, nullptr);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
     // Create Render Buffer.
     glGenRenderbuffers(1, &m_RenderBufferId);
@@ -62,4 +61,19 @@ void GLFramebuffer::Unbind() const
 void GLFramebuffer::Delete() const
 {
     glDeleteFramebuffers(1, &m_Id);
+}
+
+const uint32_t& GLFramebuffer::GetId() const
+{
+    return m_Id;
+}
+
+const uint32_t& GLFramebuffer::GetColorAttachmentId() const
+{
+    return m_ColorAttachmentId;
+}
+
+const uint32_t& GLFramebuffer::GetRenderBufferId() const
+{
+    return m_RenderBufferId;
 }

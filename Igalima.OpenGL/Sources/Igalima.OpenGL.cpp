@@ -14,9 +14,11 @@
 #include <Camera.h>
 #include <Graphics/Model.h>
 
+#include <OpenGL/GLFramebuffer.h>
 #include <OpenGL/GLVertexArray.h>
 #include <OpenGL/GLVertexBuffer.h>
 #include <OpenGL/GLShader.h>
+#include <OpenGL/GLWrapper.h>
 
 #include <Graphics/Noise.h>
 #include <Graphics/Shapes/Terrain.h>
@@ -167,7 +169,7 @@ int main()
 	GLShader skyboxShader("Resources/Shaders/Skybox.vs", "Resources/Shaders/Skybox.fs");
 
 	Noise noise;
-	Terrain terrain(100);
+	Terrain terrain(1080);
 	Skybox skybox({
 		"Resources/skybox/right.jpg",
 		"Resources/skybox/left.jpg",
@@ -177,10 +179,13 @@ int main()
 		"Resources/skybox/back.jpg",
 	});
 
+	// FRAMEBUFFER
+	GLFramebuffer fb(500, 500);
+
 	skyboxShader.Use();
 	skyboxShader.SetInt("skybox", 0);
 
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	// Testing classes
 	while (!glfwWindowShouldClose(window))
@@ -195,20 +200,15 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		// GOING 3D
-		glm::mat4 projection = glm::perspective(glm::radians(GlobalCamera.FOV), 1280.0f / 720.0f, 0.1f, 100.0f);
+		glm::mat4 projection = glm::perspective(glm::radians(GlobalCamera.FOV), 1280.0f / 720.0f, 0.01f, 1000.0f);
 		glm::mat4 view = GlobalCamera.GetViewMatrix();
 		glm::mat4 model = glm::mat4(1.0f);
 
 		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(.005f, .005f, .005f));
-		//shader.Use();
-		//shader.SetMat4("view", view);
-		//shader.SetMat4("projection", projection);
-		//shader.SetMat4("model", model);
+		//model = glm::scale(model, glm::vec3(.005f, .005f, .005f));
 
-		//noise.Draw();
 		terrain.SetMVP(model, view, projection);
-		terrain.Draw();
+		terrain.Draw(fb.GetColorAttachmentId());
 
 		//backpack.Draw(shader);
 

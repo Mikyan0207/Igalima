@@ -26,6 +26,11 @@ public:
     void Unbind() const;
     void Delete() const;
 
+public:
+    const uint32_t& GetId() const;
+    const uint32_t& GetColorAttachmentId() const;
+    const uint32_t& GetRenderBufferId() const;
+
 private:
     uint32_t m_Id;
     uint32_t m_ColorAttachmentId;
