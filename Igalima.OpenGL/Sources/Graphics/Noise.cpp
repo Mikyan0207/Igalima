@@ -63,7 +63,7 @@ void Noise::Initialize()
 		1.0f, 0.0f,
 		0.0f, 1.0f,
 		1.0f, 1.0f
-		}, GLDrawMode::STATIC);
+	}, GLDrawMode::STATIC);
 	GLWrapper::VertexAttributePointer(m_Shader.ProgramId, "mTexCoords", 2, GL_FLOAT, 2 * sizeof(float), 0); // TexCoords
 	m_VertexArray.AddBuffer(vbo2);
 

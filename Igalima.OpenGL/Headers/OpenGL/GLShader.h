@@ -22,6 +22,7 @@ public:
 
 public:
 	void Use() const;
+	void Unbind() const;
 	void Delete() const;
 
 	GLShader& SetBool(const std::string& name, bool value);

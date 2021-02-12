@@ -32,6 +32,11 @@ void GLShader::Use() const
 	glUseProgram(ProgramId);
 }
 
+void GLShader::Unbind() const
+{
+	glUseProgram(0);
+}
+
 void GLShader::Delete() const
 {
 	glDeleteShader(VertexShaderId);

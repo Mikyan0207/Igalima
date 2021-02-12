@@ -9,6 +9,7 @@ Texture::Texture(const std::string& path)
 
 	stbi_set_flip_vertically_on_load(true);
 	auto* data = stbi_load(path.c_str(), &Width, &Height, &Channels, 0);
+	stbi_set_flip_vertically_on_load(false);
 
 	if (data == nullptr)
 	{
@@ -26,7 +27,8 @@ Texture::Texture(const std::string& path)
 
 	glGenTextures(1, &TextureId);
 	glBindTexture(GL_TEXTURE_2D, TextureId);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, format, GL_UNSIGNED_BYTE, data);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1); // @Important: Check before using this??
+	glTexImage2D(GL_TEXTURE_2D, 0, format, Width, Height, 0, format, GL_UNSIGNED_BYTE, data);
 	glGenerateMipmap(GL_TEXTURE_2D);
 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
