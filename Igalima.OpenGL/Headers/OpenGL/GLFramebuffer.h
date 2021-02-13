@@ -9,6 +9,16 @@
 #include <iostream>
 #include <glad/glad.h>
 
+struct ColorAttachmentSettings
+{
+
+};
+
+struct RenderBufferSettings
+{
+
+};
+
 class GLFramebuffer
 {
 public:

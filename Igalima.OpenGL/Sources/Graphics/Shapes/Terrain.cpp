@@ -2,7 +2,7 @@
 
 Terrain::Terrain(const uint32_t& size)
 {
-    const float SIZE = 1080; // Make this value configurable.
+    const float SIZE = 10000; // Make this value configurable.
     m_Size = size;
     auto vertices = std::vector<float>(m_Size * m_Size * 3);
     auto indices = std::vector<uint32_t>(6 * (m_Size - 1) * (m_Size - 1));
@@ -65,21 +65,17 @@ Terrain::Terrain(const uint32_t& size)
     m_Shader.Use();
     m_Shader.SetInt("NoiseTexture", 0);
     m_Shader.Unbind();
-
-    heightmap = new Texture("Resources/heightmap.png");
 }
 
 Terrain::~Terrain()
 {
 }
 
-void Terrain::Draw(const uint32_t& textureId)
+void Terrain::Draw()
 {
     m_Shader.Use();
 
     m_VertexArray.Bind();
-    glActiveTexture(GL_TEXTURE0);
-    heightmap->Bind();
     GLWrapper::DrawElements(GL_TRIANGLES, m_IndicesCount, GL_UNSIGNED_INT, 0);
     m_VertexArray.Unbind();
 

@@ -11,7 +11,7 @@ void main()
 {
   float height = texture(NoiseTexture, mTexCoords).r;
 
-  height = height * 400.0;
+  height = height * 40.0;
 
   vec4 worldPos = model * vec4(mPos.x, height, mPos.z, 1.0);
 

@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\Includes;$(ProjectDir)Headers;$(ProjectDit)3rdParty</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Libraries\Includes;$(ProjectDir)Headers;$(ProjectDir)3rdParty;$(ProjectDir)Demos</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -150,6 +150,7 @@
     <ClCompile Include="3rdParty\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="3rdParty\imgui\imgui_tables.cpp" />
     <ClCompile Include="3rdParty\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Demos\ProceduralTerrainGeneration\PTG_Scene.cpp" />
     <ClCompile Include="Sources\Camera.cpp" />
     <ClCompile Include="Sources\Core\ResourcesManager.cpp" />
     <ClCompile Include="Sources\Graphics\Mesh.cpp" />
@@ -169,6 +170,8 @@
     <ClCompile Include="Sources\OpenGL\GLVertexArray.cpp" />
     <ClCompile Include="Sources\OpenGL\GLVertexBuffer.cpp" />
     <ClCompile Include="Sources\OpenGL\GLWrapper.cpp" />
+    <ClCompile Include="Sources\Platform\Window.cpp" />
+    <ClCompile Include="Sources\Scenes\SceneManager.cpp" />
     <ClCompile Include="Sources\stb_image.c" />
     <ClCompile Include="Sources\Graphics\Textures\Texture.cpp" />
   </ItemGroup>
@@ -181,6 +184,7 @@
     <ClInclude Include="3rdParty\imgui\imstb_rectpack.h" />
     <ClInclude Include="3rdParty\imgui\imstb_textedit.h" />
     <ClInclude Include="3rdParty\imgui\imstb_truetype.h" />
+    <ClInclude Include="Demos\ProceduralTerrainGeneration\PTG_Scene.h" />
     <ClInclude Include="Headers\Camera.h" />
     <ClInclude Include="Headers\Core\ResourcesManager.h" />
     <ClInclude Include="Headers\Graphics\Lights\DirectionalLight.h" />
@@ -205,6 +209,9 @@
     <ClInclude Include="Headers\OpenGL\GLWrapper.h" />
     <ClInclude Include="Headers\OpenGL\Vertex.h" />
     <ClInclude Include="Headers\Graphics\IDrawable.h" />
+    <ClInclude Include="Headers\Platform\Window.h" />
+    <ClInclude Include="Headers\Scenes\IScene.h" />
+    <ClInclude Include="Headers\Scenes\SceneManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

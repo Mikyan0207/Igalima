@@ -4,6 +4,11 @@
 
 #include <OpenGL/GLWrapper.h>
 
+void GLWrapper::Viewport(const int& x, const int& y, const uint32_t& width, const uint32_t& height)
+{
+    glViewport(x, y, width, height);
+}
+
 void GLWrapper::DepthFunction(const uint32_t& mode)
 {
     glDepthFunc(mode);
