@@ -32,4 +32,4 @@ Not in a specific order.
 ## Other
 
 - [ ] Memory Pool & Allocator
-- [ ] Performance Analysis & Optimizations (using VTuner + PurifyPlus?)
+- [ ] Performance Analysis & Optimizations (using RAD Telemetry, VTuner, PurifyPlus?)
