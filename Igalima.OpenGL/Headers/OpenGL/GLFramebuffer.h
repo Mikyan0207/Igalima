@@ -22,7 +22,7 @@ struct RenderBufferSettings
 class GLFramebuffer
 {
 public:
-    GLFramebuffer(const uint32_t& width, const uint32_t& height);
+    GLFramebuffer(const uint32_t& width, const uint32_t& height, const uint32_t& originalWidth, const uint32_t& originalHeight);
     GLFramebuffer(const GLFramebuffer&) = default;
     GLFramebuffer(GLFramebuffer&&) noexcept = default;
     ~GLFramebuffer();
@@ -47,6 +47,8 @@ private:
     uint32_t m_RenderBufferId;
     uint32_t m_Width;
     uint32_t m_Height;
+    uint32_t m_OriginalWidth;
+    uint32_t m_OriginalHeight;
 };
 
 #endif //IGALIMA_OPENGL_GLFRAMEBUFFER_H

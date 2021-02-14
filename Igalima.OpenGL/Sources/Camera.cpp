@@ -6,7 +6,7 @@ Camera::Camera(const glm::vec3& position, const glm::vec3& up)
 	WorldUp = up;
 	Pitch = 0.0f;
 	Yaw = -90.0f;
-	Speed = 50.5f;
+	Speed = 1000.5f;
 	FOV = 65.0f;
 	MouseSensitivity = 0.1f;
 

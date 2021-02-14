@@ -13,7 +13,7 @@
 class Terrain
 {
 public:
-	Terrain(const uint32_t& size);
+	Terrain(const uint32_t& size, const uint32_t & heightmapId);
 	Terrain(const Terrain&) = default;
 	Terrain(Terrain&&) noexcept = default;
 	~Terrain();
@@ -33,4 +33,9 @@ private:
 	uint32_t m_TextureCoordinatesCount;
 	GLVertexArray m_VertexArray;
 	GLShader m_Shader;
+
+	// Textures
+	uint32_t m_HeightmapId;
+	Texture* m_Heightmap;
+	Texture* m_GrassTexture;
 };

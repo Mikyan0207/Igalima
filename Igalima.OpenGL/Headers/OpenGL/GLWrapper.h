@@ -8,11 +8,14 @@
 #include <cstdint>
 #include <string>
 #include <glad/glad.h>
+#include <glm/glm.hpp>
 
 class GLWrapper
 {
 public:
     static void Viewport(const int& x, const int& y, const uint32_t& width, const uint32_t& height);
+    static void ClearColor(const glm::vec4& color);
+    static void Clear(const uint32_t& bufferBits);
     static void DepthFunction(const uint32_t& mode);
     static void EnableVertexAttribute(const uint32_t& index);
     static void VertexAttributePointer(const uint32_t& position, const uint32_t& size, const uint32_t& type, const uint32_t& stride, const uint32_t& offset);

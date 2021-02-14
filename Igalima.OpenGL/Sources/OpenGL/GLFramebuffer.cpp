@@ -4,10 +4,12 @@
 
 #include <OpenGL/GLFramebuffer.h>
 
-GLFramebuffer::GLFramebuffer(const uint32_t& width, const uint32_t& height)
+GLFramebuffer::GLFramebuffer(const uint32_t& width, const uint32_t& height, const uint32_t& originalWidth, const uint32_t& originalHeight)
 {
     m_Width = width;
     m_Height = height;
+    m_OriginalWidth = originalWidth;
+    m_OriginalHeight = originalHeight;
 
     // Color Attachment.
     glGenTextures(1,&m_ColorAttachmentId);
@@ -50,15 +52,16 @@ GLFramebuffer::~GLFramebuffer()
 void GLFramebuffer::Bind() const
 {
     glBindFramebuffer(GL_FRAMEBUFFER, m_Id);
-    glViewport(0, 0, 1280, 720);
+    glViewport(0, 0, m_Width, m_Height); // Viewport is override. Reset in Unbind().
 
     const GLenum buffers[] = { GL_COLOR_ATTACHMENT0 };
-    glDrawBuffers(1 /*length of buffers[]*/, buffers);
+    glDrawBuffers(1 , buffers);
 }
 
 void GLFramebuffer::Unbind() const
 {
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
+    glViewport(0, 0, m_OriginalWidth, m_OriginalHeight);
 }
 
 void GLFramebuffer::Delete() const

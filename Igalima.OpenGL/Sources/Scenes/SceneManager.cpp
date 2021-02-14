@@ -9,10 +9,10 @@ void SceneManager::RemoveScene(IScene* scene)
 {
 	// @Speed: Don't use std::find_if
 	auto it = std::find_if(m_Scenes.begin(), m_Scenes.end(), [&scene] (const auto& sc)
-	{
-		return scene->GetName() == sc->GetName();
-	});
-
+                           {
+                               return scene->GetName() == sc->GetName();
+                           });
+    
 	if (it != m_Scenes.end())
 		m_Scenes.erase(it);
 }
@@ -30,10 +30,10 @@ void SceneManager::DrawScene()
 void SceneManager::LoadScene(const std::string& name)
 {
 	auto it = std::find_if(m_Scenes.begin(), m_Scenes.end(), [&name](const auto& sc)
-	{
-		return name == sc->GetName();
-	});
-
+                           {
+                               return name == sc->GetName();
+                           });
+    
 	if (it == m_Scenes.end())
 	{
 		std::cerr << "Scene " << name << " not found" << std::endl;

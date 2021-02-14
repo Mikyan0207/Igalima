@@ -9,6 +9,16 @@ void GLWrapper::Viewport(const int& x, const int& y, const uint32_t& width, cons
     glViewport(x, y, width, height);
 }
 
+void GLWrapper::ClearColor(const glm::vec4& color)
+{
+    glClearColor(color.r, color.g, color.b, color.a);
+}
+
+void GLWrapper::Clear(const uint32_t& bufferBits)
+{
+    glClear(bufferBits);
+}
+
 void GLWrapper::DepthFunction(const uint32_t& mode)
 {
     glDepthFunc(mode);

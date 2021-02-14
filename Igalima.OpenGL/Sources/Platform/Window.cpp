@@ -75,9 +75,20 @@ void Window::PollEvents()
     glfwPollEvents();
 }
 
+void Window::Clear(const glm::vec4& color, const uint32_t& bufferBits)
+{
+    GLWrapper::ClearColor(color);
+    GLWrapper::Clear(bufferBits);
+}
+
 bool Window::IsOpen()
 {
     return !glfwWindowShouldClose(m_Window);
+}
+
+bool Window::IsKeyPressed(const uint32_t& key)
+{
+    return glfwGetKey(m_Window, key) == GLFW_PRESS;
 }
 
 glm::vec2 Window::GetViewport() const

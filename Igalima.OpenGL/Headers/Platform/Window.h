@@ -34,17 +34,17 @@ public:
 
 public:
     void Create();
+    void Clear(const glm::vec4& color, const uint32_t& bufferBits);
     void SwapBuffers();
     void PollEvents();
     bool IsOpen();
-    //bool IsKeyPressed(const uint32_t& key);
+    bool IsKeyPressed(const uint32_t& key);
 
 public:
     glm::vec2 GetViewport() const;
     GLFWwindow* GetWindowHandle() const;
 
 private:
-    void OnKeyPressed(GLFWwindow* window);
     static void OnViewportResize(GLFWwindow* window, int width, int height);
 
 private:

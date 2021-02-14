@@ -4,12 +4,13 @@
 
 #include <Graphics/Textures/Skybox.h>
 
-Skybox::Skybox(const std::vector<std::string>& paths)
+Skybox::Skybox(const SkyboxSettings& settings)
 {
     glGenTextures(1, &m_Id);
     Bind();
 
     int width, height, channels = 0;
+    const auto paths = settings.Textures;
 
     for (uint32_t i = 0; i < paths.size(); i += 1)
     {
@@ -85,7 +86,11 @@ Skybox::Skybox(const std::vector<std::string>& paths)
     // Maybe i'll make it configurable later if necessary.
     GLWrapper::VertexAttributePointer(0, 3, GL_FLOAT, 3 * sizeof(float), 0);
 
+#if _DEBUG
     assert(vbo == nullptr); // @Debug: Remove later.
+#endif
+
+    m_Shader = new GLShader(settings.VertexShaderPath, settings.FragmentShaderPath);
 }
 
 Skybox::Skybox(const std::string& path)
@@ -112,21 +117,18 @@ void Skybox::Unbind() const
     glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
 }
 
-void Skybox::Draw(GLShader& shader)
+void Skybox::Draw(const glm::mat4& view, const glm::mat4& projection)
 {
     GLWrapper::DepthFunction(GL_LEQUAL);
-
-    // Update View matrix here?
-    // I just want to pass my shader as a parameter and nothing else so I don't know.
-    shader.Use();
-
+    m_Shader->Use();
+    m_Shader->SetMat4("view", view).SetMat4("projection", projection);
     m_VertexArray->Bind();
     ActiveTexture(GL_TEXTURE0);
     Bind();
-    GLWrapper::DrawArray(GL_TRIANGLES, 0, 36); // Dynamic values?
+    GLWrapper::DrawArray(GL_TRIANGLES, 0, 36);
     Unbind();
     m_VertexArray->Unbind();
-
+    m_Shader->Unbind();
     GLWrapper::DepthFunction(GL_LESS);
 }
 
@@ -142,4 +144,7 @@ void Skybox::Delete() const
 
     if (m_VertexArray)
         delete m_VertexArray;
+
+    if (m_Shader)
+        delete m_Shader;
 }

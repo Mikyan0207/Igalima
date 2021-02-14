@@ -1,6 +1,6 @@
 #include <Graphics/Shapes/Terrain.h>
 
-Terrain::Terrain(const uint32_t& size)
+Terrain::Terrain(const uint32_t& size, const uint32_t& heightmapId)
 {
     const float SIZE = 10000; // Make this value configurable.
     m_Size = size;
@@ -17,8 +17,8 @@ Terrain::Terrain(const uint32_t& size)
             vertices[vertexPointer * 3 + 1] = 0;
             vertices[vertexPointer * 3 + 2] = (float)i / ((float)m_Size - 1) * SIZE;
 
-            textureCoords[vertexPointer * 2] = (float)j / ((float)m_Size - 1);
-            textureCoords[vertexPointer * 2 + 1] = (float)i / ((float)m_Size - 1);
+            textureCoords[vertexPointer * 2] = (float)(j / ((float)m_Size - 1));
+            textureCoords[vertexPointer * 2 + 1] = (float)(i / ((float)m_Size - 1));
             vertexPointer++;
         }
     }
@@ -43,10 +43,6 @@ Terrain::Terrain(const uint32_t& size)
     m_IndicesCount = indices.size();
     m_TextureCoordinatesCount = textureCoords.size();
 
-    std::cout << "Terrain Vertices: " << m_VerticesCount << std::endl;
-    std::cout << "Terrain Indices: " << m_IndicesCount << std::endl;
-    std::cout << "Terrain TexCoords: " << m_TextureCoordinatesCount << std::endl;
-
     auto vbo = std::make_unique<GLVertexBuffer>(vertices, GLDrawMode::STATIC);
     GLWrapper::VertexAttributePointer(0, 3, GL_FLOAT, 3 * sizeof(float), 0);
 
@@ -63,7 +59,11 @@ Terrain::Terrain(const uint32_t& size)
     m_Shader = GLShader("Resources/Shaders/Terrain/Terrain_Vertex.glsl", "Resources/Shaders/Terrain/Terrain_Fragment.glsl");
 
     m_Shader.Use();
+    m_HeightmapId = heightmapId;
+    glBindTexture(GL_TEXTURE_2D, m_HeightmapId);
     m_Shader.SetInt("NoiseTexture", 0);
+    m_GrassTexture = new Texture("Resources/Textures/Grass/Grass_2K_Albedo.jpg");
+    m_Shader.SetInt("GrassTexture", 1);
     m_Shader.Unbind();
 }
 
@@ -74,8 +74,14 @@ Terrain::~Terrain()
 void Terrain::Draw()
 {
     m_Shader.Use();
-
     m_VertexArray.Bind();
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_HeightmapId);
+
+    glActiveTexture(GL_TEXTURE1);
+    m_GrassTexture->Bind();
+
     GLWrapper::DrawElements(GL_TRIANGLES, m_IndicesCount, GL_UNSIGNED_INT, 0);
     m_VertexArray.Unbind();
 
