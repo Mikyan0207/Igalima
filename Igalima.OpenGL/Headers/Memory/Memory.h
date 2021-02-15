@@ -21,6 +21,6 @@ class Memory
     private:
     uint64_t m_Size;
     void* m_Buffer;
-}
+};
 
 #endif //_MEMORY_H

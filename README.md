@@ -6,15 +6,17 @@
 ## Work in Progress
 ### Procedural Terrain Generation
  - [x] Noise & Heightmap
- - [ ] Terrain Generation & Rendering
+ - [x] Terrain Generation & Rendering
+ - [ ] Multi-Texturing & Other Effects.
 
 ## Engine Roadmap
 Not in a specific order.
 
 - [x] 3D models loading & rendering (need to be improved)
 - [x] Skybox
-- [ ] Collisions
+- [ ] 2D Rendering
 - [ ] Text Rendering
+- [ ] Collisions
 - [ ] Bloom
 - [ ] HDR
 - [ ] Shadows
@@ -22,7 +24,6 @@ Not in a specific order.
 - [ ] SSAO
 - [ ] Normal/Parallax Mapping
 - [ ] Deferred Shading
-- [ ] 2D Rendering
 - [ ] More effects with shaders
 - [ ] Variance shadow mapping
 - [ ] Depth-buffer optimization
