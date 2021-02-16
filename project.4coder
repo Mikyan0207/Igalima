@@ -57,7 +57,7 @@ command_list =
 		.cursor_at_end = true,
 		.cmd =
 		{
-			{ "run.bat", .os = "win" },
+			{ ".\build/Igalima.OpenGL.exe", .os = "win" },
 		},
 	},
 

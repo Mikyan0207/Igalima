@@ -1,7 +1,7 @@
 @echo off
 
 set files= ..\Sources\main.cpp
-set options= /Zi /Fe"Igalima.OpenGL"
+set options= /Zi /Fe"Igalima.OpenGL.exe"
 
 pushd build
 :: Change this line if you want to compile on your PC.
