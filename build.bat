@@ -1,8 +1,7 @@
 @echo off
 
-set files= ..\Sources\main.cpp ..\Sources\Platform\Window.cpp ..\Sources\Renderer\Renderer.cpp ^
-		   ..\Sources\glad.c
-set options= /Zi /EHsc /W3 /std:c++17 /MDd /Fe"Igalima.OpenGL.exe"
+set files= ..\Sources\main.cpp ..\Sources\Platform\Window.cpp ..\Sources\Renderer\Renderer.cpp ..\Sources\glad.c
+set options= /DDEBUG /Zi /EHsc /W3 /std:c++17 /MDd /Fe"Igalima.OpenGL.exe"
 
 pushd build
 :: Change this line if you want to compile on your PC.
