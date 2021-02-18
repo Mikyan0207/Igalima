@@ -8,9 +8,6 @@
 
 int main()
 {
-    internal u32 z = 0;
-    u32 i = 0;
-    f32 j = 0.0f;
     assert(true);
     return 0;
 }
