@@ -5,6 +5,7 @@ Igalima.OpenGL is 2D/3D renderer
 ### Dependencies
 
 - GLFW (Will be removed in the next commit)
+- OpenGL 4.6
 - Windows API
 - XInput
 - XAudio2
