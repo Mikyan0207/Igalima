@@ -39,6 +39,17 @@ command_list =
 		},
 	},
 	{
+		.name = "build-exe",
+		.out = "*compilation*",
+		.footer_panel = true,
+		.save_dirty_files = true,
+		.cursor_at_end = true,
+		.cmd =
+		{
+			{ "build-exe.bat", .os = "win" },
+		},
+	},
+	{
 		.name = "setup",
 		.out = "*setup*",
 		.footer_panel = true,
@@ -57,12 +68,12 @@ command_list =
 		.cursor_at_end = true,
 		.cmd =
 		{
-			{ ".\build/Igalima.OpenGL.exe", .os = "win" },
+			{ ".\build-exe/Igalima.exe", .os = "win" },
 		},
 	},
 
 };
 
 fkey_command[1] = "build";
-fkey_command[2] = "setup";
+fkey_command[2] = "build-exe";
 fkey_command[3] = "run";
