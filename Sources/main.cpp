@@ -9,11 +9,5 @@
 
 int main()
 {
-    // StackAllocator is not scoped!
-    // We must call Delete() when we are done with it.
-    Memory::StackAllocator sa(100);
-    
-    sa.Delete();
-    
     return 0;
 }

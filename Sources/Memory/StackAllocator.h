@@ -30,7 +30,7 @@ namespace Memory
         inline const u32& GetMarker() const { return m_Marker; };
         
         public:
-        void* m_Buffer;
+        u8* m_Buffer;
         u32 m_BufferSize;
         
         // Stack cursor position.
