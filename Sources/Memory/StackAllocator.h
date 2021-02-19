@@ -8,7 +8,7 @@
 namespace Memory
 {
     // NOTE(Mikyan): Make this class non-copiable?
-    class StackAllocator
+    class __declspec(dllexport) StackAllocator
     {
         public:
         explicit StackAllocator(u32 sizeInBytes);

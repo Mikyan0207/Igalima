@@ -1,4 +1,4 @@
-#include <OS/Windows/Window.h>
+#include <OS/Win32/Win32Window.h>
 
 // Windows Platform Layer
 
@@ -9,7 +9,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT message, WPARAM wparam, LPARAM lpara
 
 namespace Win32
 {
-    Window::Window(const char* title, u32 width, u32 height)
+    Win32Window::Win32Window(const char* title, u32 width, u32 height)
     {
         WNDCLASSA windowClass = {};
         
@@ -84,7 +84,7 @@ namespace Win32
         this->WindowClass = "IgalimaWindowClass";
     }
     
-    Window::~Window()
+    Win32Window::~Win32Window()
     {
         wglDeleteContext(this->OpenGLContext);
         
@@ -95,7 +95,7 @@ namespace Win32
     
     // Name is bad but SwapBuffers is already used by Windows API
     // and the compiler doesn't care if it's in a namespace or a class..
-    void Window::Swap_Buffers()
+    void Win32Window::Swap_Buffers()
     {
         SwapBuffers(DeviceContext);
     }

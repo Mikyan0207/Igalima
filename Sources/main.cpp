@@ -3,7 +3,7 @@
 #include <Common/Types.h>
 #include <Common/Static.h>
 
-#include <OS/Windows/Window.h>
+#include <OS/Win32/Win32Window.h>
 #include <Memory/StackAllocator.h>
 
 
