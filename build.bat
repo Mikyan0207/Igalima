@@ -5,7 +5,7 @@
 set CLCompilerPath= "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
 
 :: Source files.
-set SourceFiles= ..\Sources\main.cpp ..\Sources\Renderer\Renderer.cpp ..\Sources\OS\Win32Window.cpp ..\Sources\Memory\StackAllocator.cpp  ..\Sources\glad.c
+set SourceFiles= ..\Sources\main.cpp ..\Sources\Renderer\Renderer.cpp ..\Sources\OS\Windows\Window.cpp ..\Sources\Memory\StackAllocator.cpp  ..\Sources\glad.c
 
 :: Inclues files directory.
 set DebugIncludeFiles= /I"..\Includes" /I"..\Sources"
