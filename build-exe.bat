@@ -4,7 +4,7 @@ set CLCompilerPath= "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterpr
 
 
 :: Source files.
-set SourceFiles= ..\Sources\main.cpp ..\Sources\OS\Win32\Win32Window.cpp ..\Sources\Memory\StackAllocator.cpp
+set SourceFiles= ..\Sources\main.cpp ..\Sources\OS\Win32\Win32Window.cpp ..\Sources\OS\Win32\Win32XInput.cpp ..\Sources\Memory\StackAllocator.cpp
 
 :: Inclues files directory.
 set DebugIncludeFiles= /I"..\Includes" /I"..\Sources"

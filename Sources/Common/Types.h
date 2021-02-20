@@ -1,5 +1,3 @@
-/* date = February 16th 2021 8:55 pm */
-
 #ifndef _TYPES_H
 #define _TYPES_H
 
