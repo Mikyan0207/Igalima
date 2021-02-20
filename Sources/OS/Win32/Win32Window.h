@@ -9,17 +9,17 @@
 // Platform dependent stuff.
 namespace Win32
 {
-    class __declspec(dllexport) Win32Window
+    class __declspec(dllexport) Window
     {
         public:
-        Win32Window(const char* title, u32 width, u32 height);
-        Win32Window(const Win32Window&) = delete;
-        Win32Window(Win32Window&&) noexcept = delete;
-        ~Win32Window();
+        Window(const char* title, u32 width, u32 height);
+        Window(const Window&) = delete;
+        Window(Window&&) noexcept = delete;
+        ~Window();
         
         public:
-        Win32Window& operator=(const Win32Window&) = delete;
-        Win32Window& operator=(Win32Window&&) noexcept = delete;
+        Window& operator=(const Window&) = delete;
+        Window& operator=(Window&&) noexcept = delete;
         
         public:
         void Swap_Buffers();

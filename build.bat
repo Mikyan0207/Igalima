@@ -5,7 +5,7 @@
 set CLCompilerPath= "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
 
 :: Source files.
-set SourceFiles=  ..\Sources\OS\Win32\Win32Window.cpp ..\Sources\Memory\StackAllocator.cpp
+set SourceFiles=  ..\Sources\OS\Win32\Win32Window.cpp  ..\Sources\OS\Win32\Win32XInput.cpp  ..\Sources\OS\Linux\LinuxWindow.cpp ..\Sources\Memory\StackAllocator.cpp
 
 :: Inclues files directory.
 set DebugIncludeFiles= /I"..\Includes" /I"..\Sources"
