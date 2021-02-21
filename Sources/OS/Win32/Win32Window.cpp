@@ -82,6 +82,16 @@ namespace Win32
         this->DeviceContext = hdc;
         this->OpenGLContext = context;
         this->WindowClass = "IgalimaWindowClass";
+        
+        
+        // NOTE(Mikyan): For now, we'll load OpenGL functions here
+        // We'll move this to a separate function later when we'll
+        // support multiple render API.
+        if (!gladLoadGL())
+        {
+            // TODO(Mikyan): Better logging system.
+            std::cerr << "gladLoadGL() failed." << std::endl;
+        }
     }
     
     Window::~Window()

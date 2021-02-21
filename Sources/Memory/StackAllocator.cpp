@@ -2,10 +2,12 @@
 
 namespace Memory
 {
+    // TODO(Mikyan): Aligned Memory Allocation!
     StackAllocator::StackAllocator(u32 sizeInBytes)
     {
-        // u8 = 1 byte.
-        // We don't want to do some crazy template stuff.
+        // NOTE(Mikyan): We may want to call VirtualAlloc or malloc
+        // since new is slower and can cause memory fragmentation
+        // in some cases.
         m_Buffer = new u8[sizeInBytes]();
         m_BufferSize = sizeInBytes;
         m_Marker = sizeInBytes;
@@ -27,7 +29,6 @@ namespace Memory
     
     void StackAllocator::Free(u32 marker)
     {
-        // NOTE(Mikyan): Not sure about this.
         if (m_BufferSize < m_Marker + marker)
             return;
         

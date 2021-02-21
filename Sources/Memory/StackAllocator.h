@@ -4,11 +4,12 @@
 #include <cstring>
 
 #include <Common/Types.h>
+#include <Common/Igalima.h>
 
 namespace Memory
 {
     // NOTE(Mikyan): Make this class non-copiable?
-    class __declspec(dllexport) StackAllocator
+    class IGALIMA_API StackAllocator
     {
         public:
         explicit StackAllocator(u32 sizeInBytes);

@@ -5,7 +5,7 @@
 set CLCompilerPath= "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
 
 :: Source files.
-set SourceFiles=  ..\Sources\OS\Win32\Win32Window.cpp  ..\Sources\OS\Win32\Win32XInput.cpp  ..\Sources\OS\Linux\LinuxWindow.cpp ..\Sources\Memory\StackAllocator.cpp
+set SourceFiles=  ..\Sources\OS\Win32\Win32Window.cpp  ..\Sources\OS\Win32\Win32XInput.cpp  ..\Sources\OS\Linux\LinuxWindow.cpp ..\Sources\Memory\StackAllocator.cpp ..\Sources\OpenGL\GLVertexBuffer.cpp ..\Sources\OpenGL\GLIndexBuffer.cpp  ..\Sources\glad.c
 
 :: Inclues files directory.
 set DebugIncludeFiles= /I"..\Includes" /I"..\Sources"
@@ -14,7 +14,7 @@ set DebugIncludeFiles= /I"..\Includes" /I"..\Sources"
 set DebugLibraries= "opengl32.lib" "user32.lib" "gdi32.lib" "winmm.lib"
 
 :: Debug Compiler Flags.
-set DebugCompilerOptions= /DDEBUG /D_USRDLL /D_WINDLL /MDd /LD /INCREMENTAL:no /nologo /GR /Od /Oi /WX /W4 /Zi /EHsc /std:c++17 /Fe"Igalima" /Fm"Igalima.map"
+set DebugCompilerOptions= /DIGALIMA_EXPORTS /DDEBUG /D_USRDLL /D_WINDLL /MDd /LD /INCREMENTAL:no /nologo /GR /Od /Oi /WX /W4 /Zi /EHsc /std:c++17 /Fe"Igalima" /Fm"Igalima.map"
 
 :: Linker Flags.
 set DebugLinkerOptions= /link /DLL

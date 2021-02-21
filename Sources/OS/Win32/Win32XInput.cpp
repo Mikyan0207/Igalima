@@ -1,8 +1,11 @@
-#include <OS/Win32/Win32XInput.h>
+#include <Windows.h>
+#include <xinput.h>
+
+#include <Common/Igalima.h>
 
 namespace Win32 {
     
-    void LoadXInput()
+    void IGALIMA_API LoadXInput()
     {
         // Loading XInput 1.4
         // Should only be available on Windows 10 and 8.

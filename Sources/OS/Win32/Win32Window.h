@@ -3,13 +3,16 @@
 
 #include <Windows.h>
 #include <cassert>
+#include <iostream>
+#include <OS/glad.h>
 #include <GL/gl.h>
 #include <Common/Types.h>
+#include <Common/Igalima.h>
 
 // Platform dependent stuff.
 namespace Win32
 {
-    class __declspec(dllexport) Window
+    class IGALIMA_API Window
     {
         public:
         Window(const char* title, u32 width, u32 height);
