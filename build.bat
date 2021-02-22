@@ -5,7 +5,7 @@
 set CLCompilerPath= "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat"
 
 :: Source files.
-set SourceFiles=  ..\Sources\OS\Win32\Win32Window.cpp  ..\Sources\OS\Win32\Win32XInput.cpp  ..\Sources\OS\Linux\LinuxWindow.cpp ..\Sources\Memory\StackAllocator.cpp ..\Sources\OpenGL\GLVertexBuffer.cpp ..\Sources\OpenGL\GLIndexBuffer.cpp  ..\Sources\glad.c
+set SourceFiles=  ..\Sources\OS\Win32\Win32Window.cpp  ..\Sources\OS\Win32\Win32XInput.cpp  ..\Sources\OS\Linux\LinuxWindow.cpp ..\Sources\Memory\StackAllocator.cpp ..\Sources\OpenGL\GLVertexBuffer.cpp ..\Sources\OpenGL\GLIndexBuffer.cpp  ..\Sources\OpenGL\GLVertexArray.cpp ..\Sources\OpenGL\GLShader.cpp ..\Sources\glad.c ..\Sources\Common\stb_image.cpp
 
 :: Inclues files directory.
 set DebugIncludeFiles= /I"..\Includes" /I"..\Sources"
