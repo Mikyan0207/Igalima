@@ -2,12 +2,8 @@
  
 :warning: Currently refactoring the project :warning:
 
-
-## Work in Progress
-### Procedural Terrain Generation
- - [x] Noise & Heightmap
- - [x] Terrain Generation & Rendering
- - [ ] Multi-Texturing & Other Effects.
+This branch is not updated anymore, check dev-0.1 for new stuff.
+The branch will be merged when all the current features are implemented on 0.1.
 
 ## Engine Roadmap
 Not in a specific order.
