@@ -32,13 +32,13 @@ MacOS:
 ## Tools Used
 
 - 4coder
-- Visual Studio 2019
-- Intel's VTune Profiler
+- JetBrains Rider
 
 
 ## Resources Used
 
 #### Game/Graphics Programming
-- Handmade Hero by Casey Muratori
+- Handmade Hero & Blog Articles by Casey Muratori
 - Game Engine Architecture by Jason Gregory
 - LearnOpenGL by Joey de Vries
+- VulkanTutorial by Overv
