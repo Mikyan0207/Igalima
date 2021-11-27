@@ -1,7 +1,10 @@
 ﻿using Igalima.Engine.Graphics.Shaders;
+using Igalima.Engine.IO.Stores;
+using Igalima.Resources;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
+
 namespace Igalima.Engine
 {
     public class Window : GameWindow
@@ -19,8 +22,11 @@ namespace Igalima.Engine
 
         private Shader? _shader;
 
+        private ResourceStore _store;
+
         public Window(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
         {
+            _store = new ResourceStore(typeof(IgalimaResourcesAssembly).Assembly);
         }
 
         protected override void OnLoad()
@@ -39,8 +45,7 @@ namespace Igalima.Engine
 
             GL.EnableVertexAttribArray(0);
 
-            _shader = new Shader("../../../../Igalima.Resources/Shaders/Shader_Triangle.vs", "../../../../Igalima.Resources/Shaders/Shader_Triangle.fs");
-            _shader.Use();
+            _shader = new Shader(_store.Get("Shaders/Sh_Triangle.vs"), _store.Get("Shaders/Sh_Triangle.fs"));
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
@@ -49,9 +54,10 @@ namespace Igalima.Engine
 
             GL.Clear(ClearBufferMask.ColorBufferBit);
 
-            _shader?.Use();
+            _shader?.Bind();
             GL.BindVertexArray(_vertexArrayObject);
             GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+            _shader?.Unbind();
             SwapBuffers();
         }
 
@@ -71,8 +77,7 @@ namespace Igalima.Engine
             GL.DeleteBuffer(_vertexBufferObject);
             GL.DeleteVertexArray(_vertexArrayObject);
 
-            if (_shader != null)
-                GL.DeleteProgram(_shader.Handle);
+            _shader?.Unbind();
 
             base.OnUnload();
         }

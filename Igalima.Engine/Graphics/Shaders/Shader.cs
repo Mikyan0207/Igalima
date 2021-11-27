@@ -1,5 +1,6 @@
 ﻿using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
+using System.Text;
 
 namespace Igalima.Engine.Graphics.Shaders
 {
@@ -7,28 +8,32 @@ namespace Igalima.Engine.Graphics.Shaders
     {
         public readonly int Handle;
 
-        private readonly Dictionary<string, int> _uniformLocations;
+        public bool IsLoaded { get; private set; }
 
-        public Shader(string vertexPath, string fragmentPath)
+        private IUniform[] _uniformsValues = Array.Empty<IUniform>();
+
+        internal readonly Dictionary<string, IUniform> Uniforms = new();
+
+        internal bool IsBound { get; private set; }
+
+        public Shader(byte[] vertexBytes, byte[] fragmentBytes)
         {
             #region Vertex Shader
 
-            var shaderSource = File.ReadAllText(vertexPath);
+            var shaderSource = LoadFile(vertexBytes);
             var vertexShader = GL.CreateShader(ShaderType.VertexShader);
 
             GL.ShaderSource(vertexShader, shaderSource);
-
             CompileShader(vertexShader);
 
             #endregion
 
             #region Fragment Shader
 
-            shaderSource = File.ReadAllText(fragmentPath);
+            shaderSource = LoadFile(fragmentBytes);
             var fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
 
             GL.ShaderSource(fragmentShader, shaderSource);
-
             CompileShader(fragmentShader);
 
             #endregion
@@ -49,26 +54,31 @@ namespace Igalima.Engine.Graphics.Shaders
 
             #endregion
 
-            #region Uniforms
+            IsLoaded = true;
 
-            GL.GetProgram(Handle, GetProgramParameterName.ActiveUniforms, out var numberOfUniforms);
-
-            _uniformLocations = new Dictionary<string, int>();
-
-            for (var i = 0; i < numberOfUniforms; i++)
-            {
-                var key = GL.GetActiveUniform(Handle, i, out _, out _);
-                var location = GL.GetUniformLocation(Handle, key);
-
-                _uniformLocations.Add(key, location);
-            }
-
-            #endregion
+            SetupUniforms();
         }
 
-        public void Use()
+        public void Bind()
         {
+            if (IsBound)
+                return;
+
             GL.UseProgram(Handle);
+
+            foreach (var uniform in _uniformsValues)
+                uniform.Update();
+
+            IsBound = true;
+        }
+
+        public void Unbind()
+        {
+            if (!IsBound)
+                return;
+
+            GL.UseProgram(0);
+            IsBound = false;
         }
 
         public int GetAttribLocation(string attribName)
@@ -76,45 +86,60 @@ namespace Igalima.Engine.Graphics.Shaders
             return GL.GetAttribLocation(Handle, attribName);
         }
 
-        #region Uniform Setters
-
-        public void SetInt(string name, int data)
+        public Uniform<T> GetUniform<T>(string name) where T : struct, IEquatable<T>
         {
-            GL.UseProgram(Handle);
-            GL.Uniform1(_uniformLocations[name], data);
+            return (Uniform<T>)Uniforms[name];
         }
 
-        public void SetFloat(string name, float data)
+        private void SetupUniforms()
         {
-            GL.UseProgram(Handle);
-            GL.Uniform1(_uniformLocations[name], data);
+            GL.GetProgram(Handle, GetProgramParameterName.ActiveUniforms, out int uniformCount);
+
+            _uniformsValues = new IUniform[uniformCount];
+
+            for (var i = 0; i < uniformCount; i++)
+            {
+                GL.GetActiveUniform(Handle, i, 100, out _, out _, out var type, out var uniformName);
+
+                IUniform? uniform = type switch
+                {
+                    ActiveUniformType.Bool => CreateUniform<bool>(uniformName),
+                    ActiveUniformType.Float => CreateUniform<float>(uniformName),
+                    ActiveUniformType.Int => CreateUniform<int>(uniformName),
+                    ActiveUniformType.FloatMat3 => CreateUniform<Matrix3>(uniformName),
+                    ActiveUniformType.FloatMat4 => CreateUniform<Matrix4>(uniformName),
+                    ActiveUniformType.FloatVec2 => CreateUniform<Vector2>(uniformName),
+                    ActiveUniformType.FloatVec3 => CreateUniform<Vector3>(uniformName),
+                    ActiveUniformType.FloatVec4 => CreateUniform<Vector4>(uniformName),
+                    ActiveUniformType.Sampler2D => CreateUniform<int>(uniformName),
+                    _ => null
+                };
+
+                if (uniform == null)
+                    continue;
+
+                Uniforms.Add(uniformName, uniform);
+                _uniformsValues[i] = uniform;
+            }
         }
 
-        public void SetVector2(string name, Vector2 data)
+        private IUniform CreateUniform<T>(string uniformName) where T : struct, IEquatable<T>
         {
-            GL.UseProgram(Handle);
-            GL.Uniform2(_uniformLocations[name], data);
+            var location = GL.GetUniformLocation(Handle, uniformName);
+
+            return new Uniform<T>(this, uniformName, location);
         }
 
-        public void SetVector3(string name, Vector3 data)
+        private static string LoadFile(byte[] bytes)
         {
-            GL.UseProgram(Handle);
-            GL.Uniform3(_uniformLocations[name], data);
-        }
+            if (bytes == null)
+                throw new ArgumentNullException(nameof(bytes));
 
-        public void SetMatrix3(string name, Matrix3 data)
-        {
-            GL.UseProgram(Handle);
-            GL.UniformMatrix3(_uniformLocations[name], true, ref data);
-        }
+            using var ms = new MemoryStream(bytes);
+            using var sr = new StreamReader(ms);
 
-        public void SetMatrix4(string name, Matrix4 data)
-        {
-            GL.UseProgram(Handle);
-            GL.UniformMatrix4(_uniformLocations[name], true, ref data);
+            return sr.ReadToEnd();
         }
-
-        #endregion
 
         private static void CompileShader(int shader)
         {
