@@ -7,6 +7,8 @@ namespace Igalima.Engine.Graphics.Primitives
     [StructLayout(LayoutKind.Sequential)]
     public readonly struct Triangle : IEquatable<Triangle>
     {
+        // Note: Vertices ordered in screen-space counter-clockwise order.
+
         public readonly Vector2 Point0;
 
         public readonly Vector2 Point1;
