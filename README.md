@@ -1,6 +1,6 @@
 # Igalima
 
-Igalima is 2D Game Engine written in .NET 6.0 (LTS).
+Igalima is a 2D Game Engine written in .NET 6.0 (LTS).
 
 
 ## Igalima Editor
