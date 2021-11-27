@@ -1,6 +1,6 @@
 # Igalima
 
-Igalima is 2D/3D Game Engine & Renderer.
+Igalima is 2D Game Engine written in .NET 6.0 (LTS).
 
 
 ## Igalima Editor
@@ -12,27 +12,27 @@ Igalima is 2D/3D Game Engine & Renderer.
 
 ## Dependencies
 
+Third Party:
+- OpenTK
+
 Graphics API:
 - OpenGL
-- DirectX 12
-- Vulkan 
 
+
+## Platform
 Windows:
-- Windows API
-- XInput
-- XAudio2
+`Coming Soon`
 
 Linux:
-- `Not supported`
+`Coming Soon`
 
 MacOS:
-- `Not supported`
+`Coming Soon`
 
 
 ## Tools Used
 
-- 4coder
-- JetBrains Rider
+- Visual Studio 2022
 
 
 ## Resources Used
@@ -41,4 +41,4 @@ MacOS:
 - Handmade Hero & Blog Articles by Casey Muratori
 - Game Engine Architecture by Jason Gregory
 - LearnOpenGL by Joey de Vries
-- VulkanTutorial by Overv
+- osu!framework by ppy
