@@ -1,32 +1,44 @@
-# Igalima.OpenGL
- 
-:warning: Currently refactoring the project :warning:
+# Igalima
 
-This branch is not updated anymore, check dev-0.1 for new stuff.
-The branch will be merged when all the current features are implemented on 0.1.
+Igalima is 2D Game Engine written in .NET 6.0 (LTS).
 
-## Engine Roadmap
-Not in a specific order.
 
-- [x] 3D models loading & rendering (need to be improved)
-- [x] Skybox
-- [ ] 2D Rendering
-- [ ] Text Rendering
-- [ ] Collisions
-- [ ] Bloom
-- [ ] HDR
-- [ ] Shadows
-- [ ] PBR/IBL
-- [ ] SSAO
-- [ ] Normal/Parallax Mapping
-- [ ] Deferred Shading
-- [ ] More effects with shaders
-- [ ] Variance shadow mapping
-- [ ] Depth-buffer optimization
-- [ ] Precomputed Atmospheric Scattering?
-- [ ] Global illumination?
+## Igalima Editor
+`Coming Soon`
 
-## Other
+## Features
+`Coming Soon`
 
-- [ ] Memory Pool & Allocator
-- [ ] Performance Analysis & Optimizations (using tracy, VTuner, PurifyPlus?)
+
+## Dependencies
+
+Third Party:
+- OpenTK
+
+Graphics API:
+- OpenGL
+
+
+## Platform
+Windows:
+`Coming Soon`
+
+Linux:
+`Coming Soon`
+
+MacOS:
+`Coming Soon`
+
+
+## Tools Used
+
+- Visual Studio 2022
+
+
+## Resources Used
+
+#### Game/Graphics Programming
+- Handmade Hero & Blog Articles by Casey Muratori
+- Game Engine Architecture by Jason Gregory
+- LearnOpenGL by Joey de Vries
+- osu!framework by ppy
