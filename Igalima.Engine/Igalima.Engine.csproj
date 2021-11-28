@@ -17,8 +17,10 @@
 
   <ItemGroup>
     <Folder Include="Graphics\Batches\" />
+    <Folder Include="Graphics\Textures\" />
     <Folder Include="Graphics\OpenGL\Buffers\" />
     <Folder Include="Graphics\OpenGL\Vertices\" />
+    <Folder Include="Injection\" />
   </ItemGroup>
 
 </Project>

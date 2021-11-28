@@ -35,7 +35,7 @@ public class VertexBuffer<T> where T : struct, IVertex, IEquatable<T>
         VertexWrapper<T>.Bind();
         GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(Size * Stride), IntPtr.Zero, _usage);
 
-        var indices = new ushort[3]
+        var indices = new ushort[]
         {
             0, 1, 2
         };
