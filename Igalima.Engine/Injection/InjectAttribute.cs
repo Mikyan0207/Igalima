@@ -1,9 +1,12 @@
-﻿namespace Igalima.Engine.Injection;
+﻿using JetBrains.Annotations;
 
-[AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Property | AttributeTargets.Field)]
+namespace Igalima.Engine.Injection;
+
+[MeansImplicitUse(ImplicitUseKindFlags.Assign)]
+[AttributeUsage(AttributeTargets.Property)]
 public class InjectAttribute : Attribute
 {
-    public string? Name { get; private set; }
+    public string? Name { get; }
 
     public InjectAttribute()
     {
