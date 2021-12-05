@@ -1,10 +1,5 @@
 ﻿using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Igalima.Engine.Graphics.Shaders
 {
@@ -44,7 +39,7 @@ namespace Igalima.Engine.Graphics.Shaders
 
         public ref T GetValueByRef() => ref _value;
 
-        public void Updatevalue(ref T newValue)
+        public void UpdateValue(ref T newValue)
         {
             if (newValue.Equals(_value)) return;
 

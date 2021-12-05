@@ -44,6 +44,16 @@ public class Shader
         #region Fragment Shader
 
         shaderSource = ReadContent(fragmentBytes);
+
+        if (string.IsNullOrEmpty(shaderSource))
+        {
+            return new Result
+            {
+                Status = ResultStatus.Failed,
+                Errors = new List<string> { "Fragment Shader cannot be null or empty." }
+            };
+        }
+
         var fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
 
         GL.ShaderSource(fragmentShader, shaderSource);
@@ -122,7 +132,7 @@ public class Shader
         {
             GL.GetActiveUniform(Handle, i, 100, out _, out _, out var type, out var uniformName);
 
-            IUniform? uniform = type switch
+            var uniform = type switch
             {
                 ActiveUniformType.Bool => CreateUniform<bool>(uniformName),
                 ActiveUniformType.Float => CreateUniform<float>(uniformName),
