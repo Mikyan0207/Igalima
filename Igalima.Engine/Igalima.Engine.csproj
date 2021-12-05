@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2021.3.0" />
     <PackageReference Include="OpenTK" Version="4.6.7" />
     <PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
   </ItemGroup>
@@ -16,12 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="Common\Extensions\" />
     <Folder Include="Graphics\Batches\" />
     <Folder Include="Graphics\Textures\" />
     <Folder Include="Graphics\OpenGL\Buffers\" />
     <Folder Include="Graphics\OpenGL\Vertices\" />
-    <Folder Include="Injection\" />
-    <Folder Include="Common\" />
   </ItemGroup>
 
 </Project>
