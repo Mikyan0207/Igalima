@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -8,10 +8,20 @@
 
   <ItemGroup>
     <PackageReference Include="OpenTK" Version="4.6.7" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Igalima.Resources\Igalima.Resources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Graphics\Batches\" />
+    <Folder Include="Graphics\Textures\" />
+    <Folder Include="Graphics\OpenGL\Buffers\" />
+    <Folder Include="Graphics\OpenGL\Vertices\" />
+    <Folder Include="Injection\" />
+    <Folder Include="Common\" />
   </ItemGroup>
 
 </Project>
