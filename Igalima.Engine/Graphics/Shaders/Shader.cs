@@ -1,11 +1,12 @@
-﻿using OpenTK.Graphics.OpenGL4;
+﻿using Igalima.Engine.Common;
+using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 
 namespace Igalima.Engine.Graphics.Shaders;
 
 public class Shader
 {
-    public readonly int Handle;
+    public int Handle { get; private set; }
 
     public bool IsLoaded { get; private set; }
 
@@ -15,31 +16,41 @@ public class Shader
 
     internal bool IsBound { get; private set; }
 
-    public Shader(byte[]? vertexBytes, byte[]? fragmentBytes)
+    public Result Initialize(byte[] vertexBytes, byte[] fragmentBytes)
     {
-        if (vertexBytes == null)
-            throw new ArgumentNullException(nameof(vertexBytes));
-
-        if (fragmentBytes == null)
-            throw new ArgumentNullException(nameof(fragmentBytes));
-
         #region Vertex Shader
 
-        var shaderSource = LoadFile(vertexBytes);
+        var shaderSource = ReadContent(vertexBytes);
+
+        if (string.IsNullOrEmpty(shaderSource))
+        {
+            return new Result
+            {
+                Status = ResultStatus.Failed,
+                Errors = new List<string> { "Vertex Shader cannot be null or empty." }
+            };
+        }
+
         var vertexShader = GL.CreateShader(ShaderType.VertexShader);
 
         GL.ShaderSource(vertexShader, shaderSource);
-        CompileShader(vertexShader);
+        
+        var result = CompileShader(vertexShader);
+        if (result.Status != ResultStatus.Success)
+            return result;
 
         #endregion
 
         #region Fragment Shader
 
-        shaderSource = LoadFile(fragmentBytes);
+        shaderSource = ReadContent(fragmentBytes);
         var fragmentShader = GL.CreateShader(ShaderType.FragmentShader);
 
         GL.ShaderSource(fragmentShader, shaderSource);
-        CompileShader(fragmentShader);
+        result = CompileShader(fragmentShader);
+
+        if (result.Status != ResultStatus.Success)
+            return result;
 
         #endregion
 
@@ -50,7 +61,10 @@ public class Shader
         GL.AttachShader(Handle, vertexShader);
         GL.AttachShader(Handle, fragmentShader);
 
-        LinkProgram(Handle);
+        result = LinkProgram(Handle);
+
+        if (result.Status != ResultStatus.Success)
+            return result;
 
         GL.DetachShader(Handle, vertexShader);
         GL.DetachShader(Handle, fragmentShader);
@@ -62,6 +76,8 @@ public class Shader
         IsLoaded = true;
 
         SetupUniforms();
+
+        return new Result { Status = ResultStatus.Success };
     }
 
     public void Bind()
@@ -135,36 +151,51 @@ public class Shader
         return new Uniform<T>(this, uniformName, location);
     }
 
-    private static string LoadFile(byte[] bytes)
+    private static string ReadContent(byte[] bytes)
     {
-        if (bytes == null)
-            throw new ArgumentNullException(nameof(bytes));
-
         using var ms = new MemoryStream(bytes);
         using var sr = new StreamReader(ms);
 
         return sr.ReadToEnd();
     }
 
-    private static void CompileShader(int shader)
+    private static Result CompileShader(int shader)
     {
         GL.CompileShader(shader);
         GL.GetShader(shader, ShaderParameter.CompileStatus, out var code);
 
         if (code != (int)All.True)
         {
-            throw new Exception($"Error occured whilst compiling Shader({shader}).\n\n{GL.GetShaderInfoLog(shader)}");
+            return new Result
+            {
+                Status = ResultStatus.Failed,
+                Errors = new List<string>
+                {
+                    $"Error occurred whilst compiling Shader({shader}).\n\n{GL.GetShaderInfoLog(shader)}"
+                }
+            };
         }
+
+        return new Result { Status = ResultStatus.Success };
     }
 
-    private static void LinkProgram(int handle)
+    private static Result LinkProgram(int handle)
     {
         GL.LinkProgram(handle);
         GL.GetProgram(handle, GetProgramParameterName.LinkStatus, out var code);
 
         if (code != (int)All.True)
         {
-            throw new Exception($"Error occured whilst linking Program({handle})");
+            return new Result
+            {
+                Status = ResultStatus.Failed,
+                Errors = new List<string>
+                {
+                    $"Error occurred whilst linking Program({handle})"
+                }
+            };
         }
+
+        return new Result { Status = ResultStatus.Success };
     }
 }

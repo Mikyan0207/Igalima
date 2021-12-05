@@ -21,6 +21,7 @@
     <Folder Include="Graphics\OpenGL\Buffers\" />
     <Folder Include="Graphics\OpenGL\Vertices\" />
     <Folder Include="Injection\" />
+    <Folder Include="Common\" />
   </ItemGroup>
 
 </Project>

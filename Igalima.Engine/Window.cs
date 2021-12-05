@@ -1,4 +1,5 @@
-﻿using Igalima.Engine.Graphics.Batches;
+﻿using Igalima.Engine.Common;
+using Igalima.Engine.Graphics.Batches;
 using Igalima.Engine.Graphics.OpenGL.Buffers;
 using Igalima.Engine.Graphics.OpenGL.Vertices;
 using Igalima.Engine.Graphics.Primitives;
@@ -43,7 +44,9 @@ namespace Igalima.Engine
 
             _vertexBatch = new VertexBatch<Vertex>(3, 1);
 
-            _shader = new Shader(_store.Get("Shaders/Sh_Triangle.vs"), _store.Get("Shaders/Sh_Triangle.fs"));
+            _shader = new Shader();
+            if (_shader.Initialize(_store.Get("Shaders/Sh_Triangle.vs")!, _store.Get("Shaders/Sh_Triangle.fs")!).Status != ResultStatus.Success)
+                return;
 
             _shader.Bind();
         }
