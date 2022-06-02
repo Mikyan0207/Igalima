@@ -13,10 +13,7 @@ Igalima is a 2D Game Engine written in .NET 6.0 (LTS).
 ## Dependencies
 
 Third Party:
-- OpenTK
-
-Graphics API:
-- OpenGL
+- Silk.NET
 
 
 ## Platform
@@ -33,6 +30,7 @@ MacOS:
 ## Tools Used
 
 - Visual Studio 2022
+- Rider
 
 
 ## Resources Used
@@ -41,4 +39,3 @@ MacOS:
 - Handmade Hero & Blog Articles by Casey Muratori
 - Game Engine Architecture by Jason Gregory
 - LearnOpenGL by Joey de Vries
-- osu!framework by ppy
