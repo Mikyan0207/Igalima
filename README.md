@@ -1,10 +1,7 @@
 # Igalima
 
-Igalima is a 2D/3D Game Engine written in C++17.
+Igalima is a 2D/3D Game Engine & Renderer written in C++17.
 
-
-## Igalima Editor
-`Coming Soon`
 
 ## Features
 `Coming Soon`
@@ -12,7 +9,13 @@ Igalima is a 2D/3D Game Engine written in C++17.
 
 ## Dependencies
 
-Third Party:
+- OpenGL
+- DirectX 9 / 11
+- OpenAL
+- XAudio2
+- MonoVM
+- OpenFBX
+- PhysX
 
 
 ## Platform
