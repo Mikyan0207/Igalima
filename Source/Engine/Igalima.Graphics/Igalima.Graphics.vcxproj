@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -127,7 +127,7 @@
       </PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalIncludeDirectories>$(ProjectDir)Headers</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Headers;$(SolutionDir)Source\Engine\Igalima.Math;$(SolutionDir)Source\Engine\Igalima.Core\Headers;$(SolutionDir)Libraries</AdditionalIncludeDirectories>
       <PrecompiledHeaderOutputFile />
     </ClCompile>
     <Link>
@@ -163,9 +163,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Igalima.Graphics.h" />
+    <ClInclude Include="Headers\OpenGL\Buffers\IndexBuffer.h" />
+    <ClInclude Include="Headers\OpenGL\Buffers\VertexBuffer.h" />
+    <ClInclude Include="Headers\OpenGL\BufferType.h" />
+    <ClInclude Include="Headers\OpenGL\DrawMode.h" />
+    <ClInclude Include="Headers\OpenGL\Vertices\Vertex.h" />
+    <ClInclude Include="Headers\OpenGL\Wrapper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\OpenGL\Buffers\IndexBuffer.cpp" />
+    <ClCompile Include="Source\OpenGL\Buffers\VertexBuffer.cpp" />
+    <ClCompile Include="Source\OpenGL\glad.c" />
+    <ClCompile Include="Source\OpenGL\Wrapper.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

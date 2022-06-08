@@ -170,7 +170,6 @@
     <ClInclude Include="Headers\Window\WindowCreateInfo.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\glad\glad.c" />
     <ClCompile Include="Source\OpenGL\GLContext.cpp" />
     <ClCompile Include="Source\Window\Window.cpp" />
   </ItemGroup>
