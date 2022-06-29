@@ -163,15 +163,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Headers\Igalima.Graphics.h" />
+    <ClInclude Include="Headers\OpenGL\Buffers\FrameBuffer.h" />
     <ClInclude Include="Headers\OpenGL\Buffers\IndexBuffer.h" />
+    <ClInclude Include="Headers\OpenGL\Buffers\VertexArray.h" />
     <ClInclude Include="Headers\OpenGL\Buffers\VertexBuffer.h" />
     <ClInclude Include="Headers\OpenGL\BufferType.h" />
     <ClInclude Include="Headers\OpenGL\DrawMode.h" />
     <ClInclude Include="Headers\OpenGL\Vertices\Vertex.h" />
     <ClInclude Include="Headers\OpenGL\Wrapper.h" />
+    <ClInclude Include="Headers\OpenGL\InternalFormatType.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\OpenGL\Buffers\FrameBuffer.cpp" />
     <ClCompile Include="Source\OpenGL\Buffers\IndexBuffer.cpp" />
+    <ClCompile Include="Source\OpenGL\Buffers\VertexArray.cpp" />
     <ClCompile Include="Source\OpenGL\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Source\OpenGL\glad.c" />
     <ClCompile Include="Source\OpenGL\Wrapper.cpp" />

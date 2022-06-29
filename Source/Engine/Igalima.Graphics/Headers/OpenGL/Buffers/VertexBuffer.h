@@ -31,12 +31,10 @@ namespace GL
         const u32& GetId() const;
 
     private:
-        void Initialize(const BufferType& type, const u32& size, const void* vertices, const DrawMode& drawMode);
+        void Initialize(const u32& size, const void* vertices, const DrawMode& drawMode);
 
     private:
         u32 m_Id;
         DrawMode m_DrawMode;
-
-        BufferType m_Type = BufferType::ArrayBuffer;
     };
 }

@@ -8,5 +8,7 @@ namespace GL
     {
         ArrayBuffer = GL_ARRAY_BUFFER,
         ElementArrayBuffer = GL_ELEMENT_ARRAY_BUFFER,
+        RenderBuffer = GL_RENDERBUFFER,
+        FrameBuffer = GL_FRAMEBUFFER
     };
 }

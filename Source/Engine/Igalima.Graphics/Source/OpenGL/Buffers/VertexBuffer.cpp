@@ -6,19 +6,19 @@ namespace GL
     VertexBuffer::VertexBuffer(const u32& size, const DrawMode& drawMode)
         : m_DrawMode(drawMode)
     {
-        Initialize(m_Type, size, nullptr, drawMode);
+        Initialize(size, nullptr, drawMode);
     }
 
     VertexBuffer::VertexBuffer(const float* vertices, const u32& size, const DrawMode& drawMode)
         : m_DrawMode(drawMode)
     {
-        Initialize(m_Type, size, vertices, drawMode);
+        Initialize(size, vertices, drawMode);
     }
 
     VertexBuffer::VertexBuffer(const std::vector<float>& vertices, const DrawMode& drawMode)
         : m_DrawMode(drawMode)
     {
-        Initialize(m_Type, static_cast<u32>(vertices.size() * sizeof(float)), vertices.data(), drawMode);
+        Initialize(static_cast<u32>(vertices.size() * sizeof(float)), vertices.data(), drawMode);
     }
 
     VertexBuffer::~VertexBuffer()
@@ -28,17 +28,17 @@ namespace GL
 
     void VertexBuffer::Bind() const
     {
-        Wrapper::BindBuffer(BufferType::ArrayBuffer, m_Id);
+        glBindBuffer(GL_ARRAY_BUFFER, m_Id);
     }
 
     void VertexBuffer::Unbind() const
     {
-        Wrapper::BindBuffer(BufferType::ArrayBuffer, 0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
     void VertexBuffer::Delete()
     {
-        Wrapper::DeleteBuffer(m_Id);
+        glDeleteBuffers(1, &m_Id);
     }
 
     const u32& VertexBuffer::GetId() const
@@ -46,10 +46,10 @@ namespace GL
         return m_Id;
     }
 
-    void VertexBuffer::Initialize(const BufferType& type, const u32& size, const void* vertices, const DrawMode& drawMode)
+    void VertexBuffer::Initialize(const u32& size, const void* vertices, const DrawMode& drawMode)
     {
-        Wrapper::GenerateBuffer(m_Id);
+        glGenBuffers(1, &m_Id);
         Bind();
-        Wrapper::BufferData(type, size, vertices, drawMode);
+        glBufferData(GL_ARRAY_BUFFER, size, vertices, static_cast<GLenum>(drawMode));
     }
 }

@@ -6,13 +6,13 @@ namespace GL
     IndexBuffer::IndexBuffer(const u32* indices, const u32& size, const DrawMode& drawMode)
         : m_DrawMode(drawMode)
     {
-        Initialize(m_Type, size, indices, drawMode);
+        Initialize(size, indices, drawMode);
     }
 
     IndexBuffer::IndexBuffer(const std::vector<u32>& indices, const DrawMode& drawMode)
         : m_DrawMode(drawMode)
     {
-        Initialize(m_Type, static_cast<u32>(indices.size() * sizeof(u32)), indices.data(), drawMode);
+        Initialize(static_cast<u32>(indices.size() * sizeof(u32)), indices.data(), drawMode);
     }
 
     IndexBuffer::~IndexBuffer()
@@ -22,19 +22,19 @@ namespace GL
 
     void IndexBuffer::Bind() const
     {
-        Wrapper::BindBuffer(m_Type, m_Id);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_Id);
     }
 
     void IndexBuffer::Unbind() const
     {
-        Wrapper::BindBuffer(m_Type, 0);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
     void IndexBuffer::Delete()
     {
         if (m_Id != 0)
         {
-            Wrapper::DeleteBuffer(m_Id);
+            glDeleteBuffers(1, &m_Id);
         }
     }
 
@@ -43,10 +43,10 @@ namespace GL
         return m_Id;
     }
 
-    void IndexBuffer::Initialize(const BufferType& type, const u32& size, const u32* indices, const DrawMode& drawMode)
+    void IndexBuffer::Initialize(const u32& size, const u32* indices, const DrawMode& drawMode)
     {
-        Wrapper::GenerateBuffer(m_Id);
+        glGenBuffers(1, &m_Id);
         Bind();
-        Wrapper::BufferData(type, size, indices, drawMode);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, indices, static_cast<GLenum>(drawMode));
     }
 }
