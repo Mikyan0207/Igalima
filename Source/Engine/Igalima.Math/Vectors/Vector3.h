@@ -17,6 +17,12 @@ namespace Math
             Y = y;
             Z = z;
         }
+
+        static Vector3 Zero = Vector3(static_cast<T>(0), static_cast<T>(0), static_cast<T>(0));
+
+        static Vector3 One = Vector3(static_cast<T>(1), static_cast<T>(1), static_cast<T>(1));
+
+        static Vector3 OneMinus = Vector3(static_cast<T>(-1), static_cast<T>(-1), static_cast<T>(-1));
     };
 
     using Vector3f = Vector3<float>;

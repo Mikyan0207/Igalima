@@ -148,6 +148,9 @@
     <ClInclude Include="Vectors\Vector2.h" />
     <ClInclude Include="Vectors\Vector3.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="test.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
