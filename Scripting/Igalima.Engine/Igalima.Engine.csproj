@@ -1,0 +1,59 @@
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C799F5DF-0B39-37B8-B379-04C8FF08F11E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Igalima.Engine</RootNamespace>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <PlatformTarget>x64</PlatformTarget>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <ManagedAssembly>true</ManagedAssembly>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <TargetFramework>net6.0</TargetFramework>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <OutputPath>C:\Users\flori\GitHub\Igalima\binaries\Debug\</OutputPath>
+    <DebugType>full</DebugType>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <Optimize>false</Optimize>
+    <Platform>x64</Platform>
+    <WarningLevel>3</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <OutputPath>C:\Users\flori\GitHub\Igalima\binaries\Release\</OutputPath>
+    <DebugType>none</DebugType>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>queue</ErrorReport>
+    <Optimize>true</Optimize>
+    <Platform>x64</Platform>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'MinSizeRel'">
+    <OutputPath>C:\Users\flori\GitHub\Igalima\binaries\MinSizeRel\</OutputPath>
+    <DebugType>none</DebugType>
+    <DefineConstants></DefineConstants>
+    <Optimize>true</Optimize>
+    <Platform>x64</Platform>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'RelWithDebInfo'">
+    <OutputPath>C:\Users\flori\GitHub\Igalima\binaries\RelWithDebInfo\</OutputPath>
+    <DebugType>full</DebugType>
+    <DefineConstants></DefineConstants>
+    <Optimize>false</Optimize>
+    <Platform>x64</Platform>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="C:\Users\flori\GitHub\Igalima\Scripting\Igalima.Engine\Main.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\flori\GitHub\Igalima\ZERO_CHECK.vcxproj">
+      <Project>{A7B4B9D0-5AA9-3635-8667-081635188AAF}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
