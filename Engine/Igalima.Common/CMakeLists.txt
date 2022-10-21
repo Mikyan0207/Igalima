@@ -1,35 +1,15 @@
-PROJECT("Igalima.Graphics" LANGUAGES CXX)
+PROJECT("Igalima.Common" LANGUAGES CXX)
 
 SET(HEADER_FILES
-  "Headers/Igalima.Graphics.h"
-  "Headers/OpenGL/BufferType.h"
-  "Headers/OpenGL/DrawMode.h"
-  "Headers/OpenGL/InternalFormatType.h"
-  "Headers/OpenGL/Wrapper.h"
-  "Headers/OpenGL/Buffers/FrameBuffer.h"
-  "Headers/OpenGL/Buffers/IndexBuffer.h"
-  "Headers/OpenGL/Buffers/VertexArray.h"
-  "Headers/OpenGL/Buffers/VertexBuffer.h"
-  "Headers/OpenGL/Vertices/Vertex.h"
+  "Headers/Types.h"
 )
-
-SET(SOURCE_FILES
-  "Source/OpenGL/Wrapper.cpp"
-  "Source/OpenGL/Buffers/FrameBuffer.cpp"
-  "Source/OpenGL/Buffers/IndexBuffer.cpp"
-  "Source/OpenGL/Buffers/VertexArray.cpp"
-  "Source/OpenGL/Buffers/VertexBuffer.cpp"
-)
-
-FIND_PACKAGE(OpenGL REQUIRED)
 
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/Headers)
 
-SOURCE_GROUP(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${HEADER_FILES} ${SOURCE_FILES})
+SOURCE_GROUP(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${HEADER_FILES})
 
-ADD_LIBRARY(${PROJECT_NAME} STATIC ${HEADER_FILES} ${SOURCE_FILES})
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} OpenGL "Igalima.Common" "Igalima.Libraries.Glad")
-TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Headers>)
+ADD_LIBRARY(${PROJECT_NAME} INTERFACE ${HEADER_FILES})
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Headers>)
 
 SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES FOLDER "Engine")
 

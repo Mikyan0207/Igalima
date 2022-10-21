@@ -1,0 +1,7 @@
+---
+BasedOnStyle: Microsoft
+AccessModifierOffset: 0
+IndentAccessModifiers: true
+IndentCaseBlocks: true
+NamespaceIndentation: All
+PointerAlignment: Left
