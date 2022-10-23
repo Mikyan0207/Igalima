@@ -390,6 +390,9 @@ FodyWeavers.xsd
 # Misc
 Editor/Igalima.Editor/Resources
 build/
+bin-int/
+obj/
+bin/
 *.csproj
 *.vcxproj*
 *.sln
