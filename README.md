@@ -1,24 +1,26 @@
 # Igalima
 
-Igalima is a 2D/3D Game Engine & Renderer written in C++17.
+Igalima is a 2D/3D Game Engine & Renderer written in C++20 with C# (.NET 6.0) scripting.
 
+<br>
 
-## Features
-`Coming Soon`
+Igalima is still in the very early stages of development.
+APIs will change.
+Important features are missing.
+Documentation is sparse.
+Please don't build any serious projects with Igalima unless you are prepared to be broken by API changes constantly.
 
 
 ## Dependencies
 
 - OpenGL
 - DirectX 9 / 11
-- OpenAL
-- XAudio2
-- MonoVM
-- OpenFBX
-- PhysX
+- .NET6 SDK
+- Jolt Physics
 
 
 ## Platform
+
 Windows:
 `Coming Soon`
 
@@ -33,6 +35,7 @@ MacOS:
 
 - Visual Studio 2022
 - Rider
+- Premake5
 
 
 ## Resources Used

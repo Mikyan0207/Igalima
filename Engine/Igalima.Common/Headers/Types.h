@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <cstdint>
+#include <utility>
 
 using i8 = int8_t;
 using i16 = int16_t;
@@ -14,3 +15,12 @@ using u64 = uint64_t;
 
 using f32 = float;
 using f64 = double;
+
+template<typename T>
+using Pointer = T*;
+
+template<typename T, typename ... Args>
+constexpr Pointer<T> CreatePointer(Args&& ... args)
+{
+	return new T(std::forward<Args>(args)...);
+}

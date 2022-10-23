@@ -107,7 +107,7 @@ namespace Win32
     {
         ReleaseDC(this->Handle, this->DeviceContext);
         DestroyWindow(this->Handle);
-        UnregisterClass(reinterpret_cast<LPCSTR>(this->WindowClass.c_str()), nullptr);
+        UnregisterClass(reinterpret_cast<LPCWSTR>(this->WindowClass.c_str()), nullptr);
 
         this->Handle = nullptr;
 	}
